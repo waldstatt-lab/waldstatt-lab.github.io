@@ -37,8 +37,8 @@ modules of its own to its folder. Change a variant only inside its own folders;
 never import another variant's files.
 
 Waldstatt Games was a variant too, until it grew into a building game and moved
-to its own repository, [2raben/waldstatt](https://github.com/2raben/waldstatt),
-published at <https://2raben.github.io/waldstatt/>
+to its own repository, [waldstatt-lab/waldstatt](https://github.com/waldstatt-lab/waldstatt),
+published at <https://waldstatt-lab.github.io/waldstatt/>
 ([ADR 0010](decisions/0010-move-waldstatt-games-into-its-own-repository.md)).
 The overview links to the game with a card after the variants.
 
@@ -315,7 +315,7 @@ stops flapping with reduced motion. Nothing is stored or sent.
 | `/<slug>/ueber-uns/` | About the studio | `src/pages/<slug>/ueber-uns.astro` |
 | `/<slug>/spiele/<game>/` | Game idea, what to expect, controls, play link | `src/pages/<slug>/spiele/[game].astro` |
 
-`/waldstatt-games/` is a redirect to <https://2raben.github.io/waldstatt/>,
+`/waldstatt-games/` is a redirect to <https://waldstatt-lab.github.io/waldstatt/>,
 configured in [astro.config.mjs](../../astro.config.mjs), for links and installed
 apps from the time Waldstatt Games was a variant
 ([ADR 0010](decisions/0010-move-waldstatt-games-into-its-own-repository.md)).

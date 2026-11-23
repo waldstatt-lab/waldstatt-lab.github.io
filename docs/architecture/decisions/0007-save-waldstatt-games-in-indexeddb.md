@@ -10,14 +10,14 @@ superseded-by: [0010-move-waldstatt-games-into-its-own-repository.md]
 sources:
   - src/variants/waldstatt-games/game/state.ts
   - src/variants/waldstatt-games/game/main.ts
-  - https://github.com/2raben/2raben.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--leben-in-der-waldstatt.md
+  - https://github.com/waldstatt-lab/waldstatt-lab.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--leben-in-der-waldstatt.md
 ---
 
 # 0007 — Save Waldstatt Games in IndexedDB
 
 > Superseded by [ADR 0010](0010-move-waldstatt-games-into-its-own-repository.md):
 > Waldstatt Games moved to its own repository,
-> [2raben/waldstatt](https://github.com/2raben/waldstatt), where this decision
+> [waldstatt-lab/waldstatt](https://github.com/waldstatt-lab/waldstatt), where this decision
 > lives on. The record stays for its rationale; its links point to this
 > repository as it was before the move.
 
@@ -35,7 +35,7 @@ with `waldstatt-games/`. `state.ts` writes the whole document, felled trees and
 cobbles as base64 bitsets per chunk, two seconds after each change and when the
 page is hidden.
 
-The [pitch «Leben in der Waldstatt»](https://github.com/2raben/2raben.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--leben-in-der-waldstatt.md)
+The [pitch «Leben in der Waldstatt»](https://github.com/waldstatt-lab/waldstatt-lab.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--leben-in-der-waldstatt.md)
 makes the save larger and changes it all the time. It adds every Waldmensch
 with position, age, sex, hunger and work; growth per tile for the forest that
 grows back; tombstones; the condition of buildings; the flood's phase and
@@ -74,7 +74,7 @@ Alternatives considered:
 For the Waldstatt Games variant only:
 
 - The save lives in one IndexedDB database named `waldstatt-games`, in
-  [`state.ts`](https://github.com/2raben/2raben.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/src/variants/waldstatt-games/game/state.ts). Its
+  [`state.ts`](https://github.com/waldstatt-lab/waldstatt-lab.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/src/variants/waldstatt-games/game/state.ts). Its
   `meta` store holds the settlement (version, stock, buildings, unlocks, the
   flood, camera, seed and more) and the people; its `chunks` store holds one
   record per chunk with its felled trees, cobbles and seedlings as

@@ -1,12 +1,10 @@
-# Working on 2raben.github.io
+# Working on waldstatt-lab.github.io
 
 The website of a hobby game studio. It links the games programmed at the
 Nationaler Zukunftstag, which are built and deployed from their own repositories:
-Moto Devil (<https://2raben.github.io/moto-devil/>, `2raben/moto-devil`) and Car
-Drive (<https://2raben.github.io/carrrgh/>, `2raben/carrrgh`). "2raben" is a
-temporary organization name; the repository name `2raben.github.io` makes this
-the organization's Pages site at <https://2raben.github.io/>, so rename the
-repository together with the organization. The site is static, built with Astro 7,
+Moto Devil (<https://waldstatt-lab.github.io/moto-devil/>, `waldstatt-lab/moto-devil`) and Car
+Drive (<https://waldstatt-lab.github.io/carrrgh/>, `waldstatt-lab/carrrgh`).
+The organization homepage is <https://waldstatt-lab.github.io/>. The site is static, built with Astro 7,
 Tailwind CSS 4 and daisyUI 5. Until the studio's name is chosen, it holds one
 complete version per name candidate under `/<variant>/`. Use the versions pinned
 in `package.json` and `package-lock.json`.

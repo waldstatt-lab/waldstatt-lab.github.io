@@ -9,18 +9,16 @@ The website of our hobby game studio. Its main job is to let visitors find
 and play the games programmed at the Nationaler Zukunftstag. Each game is built
 and deployed to GitHub Pages from its own repository:
 
-- Moto Devil: <https://2raben.github.io/moto-devil/> ([source](https://github.com/2raben/moto-devil))
-- Car Drive: <https://2raben.github.io/carrrgh/> ([source](https://github.com/2raben/carrrgh))
+- Moto Devil: <https://waldstatt-lab.github.io/moto-devil/> ([source](https://github.com/waldstatt-lab/moto-devil))
+- Car Drive: <https://waldstatt-lab.github.io/carrrgh/> ([source](https://github.com/waldstatt-lab/carrrgh))
 
 The site links to these deployments; it does not build, host, or copy the games.
 
 ## Choosing a name
 
-"2raben" is a temporary name. Each name candidate gets its own complete version of
-the site, so colleagues can compare them and decide: Schafbock Studio, Egg Settlers,
-November Games, and 2raben games. Once the name is chosen, the
-chosen version becomes the site and the organization is renamed, unless the choice
-is 2raben games, which keeps the current name.
+The GitHub organization is Waldstatt Lab. The site still hosts the four studio
+name proposals for comparison: Schafbock Studio, Egg Settlers, November Games,
+and 2raben games.
 
 ## Possibilities
 

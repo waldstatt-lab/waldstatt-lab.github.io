@@ -1,8 +1,8 @@
 ---
 title: Car Drive
 tagline: Drei Spuren, viel Verkehr und ein Boost im richtigen Moment.
-playUrl: https://2raben.github.io/carrrgh/
-sourceUrl: https://github.com/2raben/carrrgh
+playUrl: https://waldstatt-lab.github.io/carrrgh/
+sourceUrl: https://github.com/waldstatt-lab/carrrgh
 order: 2
 ---
 
