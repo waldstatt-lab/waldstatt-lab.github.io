@@ -17,14 +17,14 @@ sources:
   - src/pages/waldstatt-games/manifest.webmanifest.ts
   - src/variants/waldstatt-games/tools/waters.mjs
   - package.json
-  - https://github.com/2raben/2raben.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--aufbauspiel-im-wald.md
+  - https://github.com/waldstatt-lab/waldstatt-lab.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--aufbauspiel-im-wald.md
 ---
 
 # 0006 — Make Waldstatt Games a browser game that gates its content
 
 > Superseded by [ADR 0010](0010-move-waldstatt-games-into-its-own-repository.md):
 > Waldstatt Games moved to its own repository,
-> [2raben/waldstatt](https://github.com/2raben/waldstatt), where this decision
+> [waldstatt-lab/waldstatt](https://github.com/waldstatt-lab/waldstatt), where this decision
 > lives on. The record stays for its rationale; its links point to this
 > repository as it was before the move.
 
@@ -35,7 +35,7 @@ touches only this variant's data) apply to it unchanged.
 
 ## Context
 
-The [pitch](https://github.com/2raben/2raben.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--aufbauspiel-im-wald.md) turns the
+The [pitch](https://github.com/waldstatt-lab/waldstatt-lab.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--aufbauspiel-im-wald.md) turns the
 Waldstatt Games variant into a building game: the home page is an endless forest,
 and visitors unlock the site's content by felling trees and building. The studio
 chose a strict gate: content is reached only through play, the variant's about and

@@ -39,20 +39,20 @@ Alternatives considered:
 
 ## Decision
 
-- The game lives in [2raben/waldstatt](https://github.com/2raben/waldstatt) and
-  is published as that repository's Pages site, <https://2raben.github.io/waldstatt/>.
+- The game lives in [waldstatt-lab/waldstatt](https://github.com/waldstatt-lab/waldstatt) and
+  is published as that repository's Pages site, <https://waldstatt-lab.github.io/waldstatt/>.
   Its pitches and ADRs moved with it.
 - This repository removes `src/pages/waldstatt-games/`,
   `src/variants/waldstatt-games/`, its entry in `src/variants/index.ts`, its
   theme in `src/styles/overview.css`, its pitches and the `pixi.js` dependency.
   The overview lists the remaining four variants.
-- `/waldstatt-games/` stays a redirect to <https://2raben.github.io/waldstatt/>,
+- `/waldstatt-games/` stays a redirect to <https://waldstatt-lab.github.io/waldstatt/>,
   configured in [astro.config.mjs](../../../astro.config.mjs), so links and
   installed apps from the variant lead to the game. Saves carry over: the
   game keeps its database and key names, and both sites share the origin.
 - ADRs 0006 to 0009 are superseded here and stay for their rationale; their
   links point to this repository as it was before the removal. Their current
-  versions are in 2raben/waldstatt.
+  versions are in waldstatt-lab/waldstatt.
 - Every remaining variant is again bound by ADRs 0001 and 0004, as amended by
   [ADR 0005](0005-enhance-november-games-with-local-interactions.md): no
   content depends on JavaScript, and no variant needs a rendering library.
@@ -74,5 +74,5 @@ Alternatives considered:
   (added after this decision, so the overview leads to the game).
 - `ls src/pages src/variants` shows no `waldstatt-games`.
 - After `mise run build`, `dist/waldstatt-games/index.html` redirects to
-  `https://2raben.github.io/waldstatt/`, and `dist/` holds no other file under
+  `https://waldstatt-lab.github.io/waldstatt/`, and `dist/` holds no other file under
   `waldstatt-games/`.

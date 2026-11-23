@@ -12,14 +12,14 @@ sources:
   - src/variants/waldstatt-games/game/savesDialog.ts
   - src/variants/waldstatt-games/game/state.ts
   - src/variants/waldstatt-games/game/main.ts
-  - https://github.com/2raben/2raben.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--waelder-speichern.md
+  - https://github.com/waldstatt-lab/waldstatt-lab.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--waelder-speichern.md
 ---
 
 # 0008 — Keep named Waldstatt saves in a database of their own, and as files
 
 > Superseded by [ADR 0010](0010-move-waldstatt-games-into-its-own-repository.md):
 > Waldstatt Games moved to its own repository,
-> [2raben/waldstatt](https://github.com/2raben/waldstatt), where this decision
+> [waldstatt-lab/waldstatt](https://github.com/waldstatt-lab/waldstatt), where this decision
 > lives on. The record stays for its rationale; its links point to this
 > repository as it was before the move.
 
@@ -33,7 +33,7 @@ grows by it.
 [ADR 0007](0007-save-waldstatt-games-in-indexeddb.md) keeps one forest, the
 one being played, in the IndexedDB database `waldstatt-games`, and «Neu
 beginnen» deletes that database. The
-[pitch «Wälder speichern»](https://github.com/2raben/2raben.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--waelder-speichern.md)
+[pitch «Wälder speichern»](https://github.com/waldstatt-lab/waldstatt-lab.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/docs/pitches/waldstatt-games/pitch--waelder-speichern.md)
 lets visitors save forests under a name, load one in place of the forest being
 played, and download and read back forests as files.
 
@@ -69,7 +69,7 @@ For the Waldstatt Games variant only:
   records and every chunk record, as `state.ts` stores them. Snapshots live in
   the IndexedDB database `waldstatt-games-saves`, store `saves`, keyed by the
   cleaned name, with the time and counts for the list; at most 200.
-  [`saves.ts`](https://github.com/2raben/2raben.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/src/variants/waldstatt-games/game/saves.ts) reads and
+  [`saves.ts`](https://github.com/waldstatt-lab/waldstatt-lab.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/src/variants/waldstatt-games/game/saves.ts) reads and
   writes it with the raw API, as ADR 0007's wrapper does.
 - «Neu beginnen» still deletes only `waldstatt-games` and the old keys; it
   leaves `waldstatt-games-saves`.

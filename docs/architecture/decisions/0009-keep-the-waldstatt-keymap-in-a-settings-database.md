@@ -17,7 +17,7 @@ sources:
 
 > Superseded by [ADR 0010](0010-move-waldstatt-games-into-its-own-repository.md):
 > Waldstatt Games moved to its own repository,
-> [2raben/waldstatt](https://github.com/2raben/waldstatt), where this decision
+> [waldstatt-lab/waldstatt](https://github.com/waldstatt-lab/waldstatt), where this decision
 > lives on. The record stays for its rationale; its links point to this
 > repository as it was before the move.
 
@@ -49,7 +49,7 @@ Alternatives considered for where it lives:
 
 For the Waldstatt Games variant only:
 
-- [`keys.ts`](https://github.com/2raben/2raben.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/src/variants/waldstatt-games/game/keys.ts) holds the
+- [`keys.ts`](https://github.com/waldstatt-lab/waldstatt-lab.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/src/variants/waldstatt-games/game/keys.ts) holds the
   keymap: each action (moving left, right, up and down, starting a selection,
   its other corner, applying, zooming, the four tools, Bauen, the menu and
   both finders) has a list of keys. Defaults: arrows, h j k l and s e i u
@@ -58,7 +58,7 @@ For the Waldstatt Games variant only:
   moved from s to g); b, m, / and : as before.
 - The text mode on a text read top-down, started with Enter on it and left
   with Escape
-  ([`textCursor.ts`](https://github.com/2raben/2raben.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/src/variants/waldstatt-games/game/textCursor.ts)),
+  ([`textCursor.ts`](https://github.com/waldstatt-lab/waldstatt-lab.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/src/variants/waldstatt-games/game/textCursor.ts)),
   has its own actions as vim's normal and visual modes: characters and lines
   (h j k l and the arrows), words (w, b, e), gg and G, v and V, o, and y to
   copy. They form a scope of their own, where Shift counts («G» is not «g»),
@@ -70,7 +70,7 @@ For the Waldstatt Games variant only:
 - Digits typed on the map are a count for the next movement, up to 9999;
   Escape or any other key drops it, and a small badge shows it. In the text
   mode they count the next motion, or the line for gg and G.
-- The dialog «Tasten» ([`keysDialog.ts`](https://github.com/2raben/2raben.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/src/variants/waldstatt-games/game/keysDialog.ts)),
+- The dialog «Tasten» ([`keysDialog.ts`](https://github.com/waldstatt-lab/waldstatt-lab.github.io/blob/04ce560ec337419cc36983e4c10d08c2816cbf51/src/variants/waldstatt-games/game/keysDialog.ts)),
   from the menu and the «:» command `tasten`, lists each action's keys,
   removes one with ×, adds one with «+ Taste» and the next key pressed, and
   brings the defaults back after asking. The map's description and the

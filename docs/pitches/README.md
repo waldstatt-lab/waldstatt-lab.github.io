@@ -41,7 +41,7 @@ What this pitch explicitly does not include.
 ## Index
 
 The pitches for Waldstatt Games moved with it to
-[2raben/waldstatt](https://github.com/2raben/waldstatt/tree/main/docs/pitches)
+[waldstatt-lab/waldstatt](https://github.com/waldstatt-lab/waldstatt/tree/main/docs/pitches)
 ([ADR 0010](../architecture/decisions/0010-move-waldstatt-games-into-its-own-repository.md)).
 
 | Pitch | Status |
