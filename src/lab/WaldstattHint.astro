@@ -1,0 +1,35 @@
+---
+/** Says which of the games also lie hidden in the Waldstatt, and how to code
+    there. The way into the Waldstatt itself is on the Fun page. */
+import type { Game } from "../lib/games";
+import { href } from "../lib/url";
+import Mushroom from "./Mushroom.astro";
+import { site } from "./site";
+
+interface Props {
+  games: Game[];
+}
+const hidden = Astro.props.games.filter((game) => game.data.inWaldstatt);
+const names = new Intl.ListFormat("de", { type: "conjunction" }).format(
+  hidden.map((game) => game.data.title),
+);
+---
+
+{hidden.length > 0 && (
+  <aside class="board hint">
+    <Mushroom />
+    <div>
+      <p>
+        {names} {hidden.length === 1 ? "lässt" : "lassen"} sich auch in der{" "}
+        <a href={href("/fun/#waldstatt")}>Waldstatt</a> entdecken, unserem
+        Aufbauspiel: irgendwo im Wald versteckt, bis jemand die richtigen Bäume
+        fällt.
+      </p>
+      <p class="mt-2">
+        Programmieren kann man dort auch. Tipp:{" "}
+        <code class="command">{site.waldstattCode}</code>, nach{" "}
+        <a href={site.wirth}>Niklaus Wirth</a>.
+      </p>
+    </div>
+  </aside>
+)}

@@ -1,5 +1,5 @@
 ---
-import { getGames } from "../../lib/games";
+import { getVariantGames } from "../../lib/games";
 import { href } from "../../lib/url";
 import GameCard from "../../variants/egg-settlers/GameCard.astro";
 import Layout from "../../variants/egg-settlers/Layout.astro";
@@ -7,7 +7,7 @@ import meta from "../../variants/egg-settlers/meta";
 import Settlement from "../../variants/egg-settlers/Settlement.astro";
 import TechIcon from "../../variants/egg-settlers/TechIcon.astro";
 
-const games = await getGames();
+const games = await getVariantGames();
 ---
 
 <Layout title={meta.name} description={meta.tagline}>

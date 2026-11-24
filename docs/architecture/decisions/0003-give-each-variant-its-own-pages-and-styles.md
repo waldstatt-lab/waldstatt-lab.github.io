@@ -2,6 +2,7 @@
 tags: [adr]
 status: accepted
 date: 2026-11-15
+amended-by: [0011-make-waldstatt-lab-the-site.md]
 amends:
   - 0001-build-a-static-site-with-astro-and-daisyui.md
   - 0002-compare-name-candidates-as-variant-routes.md
@@ -13,6 +14,10 @@ sources:
 ---
 
 # 0003 — Give each variant its own pages, layout and stylesheet
+
+> Amended by [ADR 0011](0011-make-waldstatt-lab-the-site.md): `/` is the Lab's home
+> page, and the variants are listed at `/fun/`. `src/styles/overview.css` became
+> `src/lab/variants.css`, and `src/pages/` also holds the Lab's own folders.
 
 ## Context
 
@@ -47,7 +52,7 @@ Only the game texts (`src/content/games/`, read through `src/lib/games.ts`) and
 lists the variants for the overview at `/` and fails the build when a listed
 variant has no `src/pages/<slug>/index.astro`, when a page folder is not listed,
 or when a slug is a game's Pages path. The overview imports every variant's
-`theme.css` through [src/styles/overview.css](../../../src/styles/overview.css).
+`theme.css` through `src/styles/overview.css`.
 
 This amends ADR 0002, whose route structure, shared game content, and reserved
 slugs remain, and the theme consequence of

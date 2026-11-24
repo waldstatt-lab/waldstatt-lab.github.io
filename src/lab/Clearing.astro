@@ -1,0 +1,15 @@
+---
+/** Open ground between two stretches of forest, with the forest's edges. */
+interface Props {
+  id?: string;
+  /** The id of the heading that names the section. */
+  labelledby?: string;
+}
+const { id, labelledby } = Astro.props;
+---
+
+<section class="clearing" id={id} aria-labelledby={labelledby}>
+  <div class="clearing-inner">
+    <slot />
+  </div>
+</section>

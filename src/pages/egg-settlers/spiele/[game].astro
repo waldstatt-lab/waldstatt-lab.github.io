@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
-import { getGames } from "../../../lib/games";
+import { getVariantGames } from "../../../lib/games";
 import { href } from "../../../lib/url";
 import Building from "../../../variants/egg-settlers/Building.astro";
 import { buildingFor } from "../../../variants/egg-settlers/buildings";
@@ -11,7 +11,7 @@ import meta from "../../../variants/egg-settlers/meta";
 import MotoPractice from "../../../variants/egg-settlers/MotoPractice.astro";
 
 export const getStaticPaths = (async () =>
-  (await getGames()).map((game) => ({
+  (await getVariantGames()).map((game) => ({
     params: { game: game.id },
     props: { game },
   }))) satisfies GetStaticPaths;

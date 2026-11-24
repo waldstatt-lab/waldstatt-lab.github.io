@@ -1,7 +1,8 @@
 # waldstatt-lab.github.io
 
-The website of our hobby game studio. It links the games programmed at the
-Nationaler Zukunftstag:
+The website of Waldstatt-Lab in Einsiedeln, where we experiment with technology and
+try things out. It tells how the games programmed at the Nationaler Zukunftstag were
+made, and links them:
 
 | Game | Play | Source |
 | --- | --- | --- |
@@ -9,9 +10,12 @@ Nationaler Zukunftstag:
 | Car Drive: a three-lane arcade driver through traffic | <https://waldstatt-lab.github.io/carrrgh/> | [waldstatt-lab/carrrgh](https://github.com/waldstatt-lab/carrrgh) |
 
 The games are built and deployed from their own repositories; this site only
-links to them. The site holds one complete version per name candidate: `/schafbock-studio/`,
-`/egg-settlers/`, `/november-games/` and `/2raben-games/`, each with a home page,
-an about page and a page per game. The page at `/` lists them all.
+links to them. `/fun/` lists the name candidates from before the name was chosen, each a
+complete version of the site: `/schafbock-studio/`, `/egg-settlers/`,
+`/november-games/` and `/2raben-games/`.
+
+To add an event or a game, see
+[Adding an event or a game](docs/architecture/README.md#adding-an-event-or-a-game).
 
 It is a static site built with [Astro](https://astro.build) and
 [daisyUI](https://daisyui.com), in German, and published on GitHub Pages at

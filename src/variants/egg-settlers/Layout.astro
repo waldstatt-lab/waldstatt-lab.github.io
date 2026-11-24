@@ -1,6 +1,6 @@
 ---
 import "./styles.css";
-import { getGames } from "../../lib/games";
+import { getVariantGames } from "../../lib/games";
 import { href } from "../../lib/url";
 import meta from "./meta";
 import { grassTile, svgUrl } from "./pixel";
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const games = await getGames();
+const games = await getVariantGames();
 const meadow = `background-image: ${svgUrl(grassTile(11, 64, 3))}`;
 ---
 
@@ -81,8 +81,8 @@ const meadow = `background-image: ${svgUrl(grassTile(11, 64, 3))}`;
     </main>
     <footer class="stone relative z-10 rounded-none border-x-0 border-b-0 px-4 py-6 text-center">
       <p>
-        «{meta.name}» ist einer von mehreren Namensvorschlägen.{" "}
-        <a class="link-game" href={href("/")}>
+        «{meta.name}» war einer von mehreren Namensvorschlägen.{" "}
+        <a class="link-game" href={href("/fun/")}>
           Alle Vorschläge ansehen
         </a>
       </p>

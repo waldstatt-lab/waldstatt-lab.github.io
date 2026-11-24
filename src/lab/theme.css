@@ -1,0 +1,35 @@
+/* The Lab's daisyUI theme: light forest ground, dark firs, the teal of the
+   flask in the organization's avatar, and the wood of the Waldstatt game. */
+@plugin "daisyui/theme" {
+  name: "waldstatt-lab";
+  default: true;
+  color-scheme: light;
+  --color-base-100: #e8efd2;
+  --color-base-200: #dae5bb;
+  --color-base-300: #bfd198;
+  --color-base-content: #14291c;
+  --color-primary: #0f6a68;
+  --color-primary-content: #f2fbf3;
+  --color-secondary: #2d6238;
+  --color-secondary-content: #f1f7e2;
+  --color-accent: #e3a23b;
+  --color-accent-content: #2a1b0b;
+  --color-neutral: #3b2716;
+  --color-neutral-content: #f0e2be;
+  --color-info: #2b6fb5;
+  --color-info-content: #f3f9ff;
+  --color-success: #3f7c50;
+  --color-success-content: #f1f7e2;
+  --color-warning: #e3a23b;
+  --color-warning-content: #2a1b0b;
+  --color-error: #b3402a;
+  --color-error-content: #fff4ee;
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 2px;
+  --depth: 0;
+  --noise: 0;
+}

@@ -1,53 +1,118 @@
 ---
-import "../styles/overview.css";
+import Clearing from "../lab/Clearing.astro";
+import Flask from "../lab/Flask.astro";
+import GameBoard from "../lab/GameBoard.astro";
+import Layout from "../lab/Layout.astro";
+import WaldstattHint from "../lab/WaldstattHint.astro";
+import { site } from "../lab/site";
+import { getHeldEvents, getPlannedEvents } from "../lib/events";
+import { getEventGames } from "../lib/games";
 import { href } from "../lib/url";
-import { variants } from "../variants";
+
+const events = await Promise.all(
+  (await getHeldEvents()).map(async (event) => ({
+    event,
+    games: await getEventGames(event.id),
+  })),
+);
+const planned = await getPlannedEvents();
+/** Where «Spiele» leads: the newest event with games. */
+const firstWithGames = events.findIndex(({ games }) => games.length > 0);
 ---
 
-<!doctype html>
-<html lang="de" data-theme="lofi">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Mehrere Namensvorschläge für unser Hobby-Spielestudio, jeder als eigene Version der Website."
-    />
-    <link rel="icon" href="data:," />
-    <title>Namensvorschläge für unser Spielestudio</title>
-  </head>
-  <body class="bg-base-100 text-base-content">
-    <main class="mx-auto max-w-5xl px-4 py-12">
-      <h1 class="text-4xl font-bold">Wie soll unser Spielestudio heissen?</h1>
-      <p class="mt-4 max-w-prose text-lg">
-        Jeder Vorschlag ist eine eigene Version der Website, mit unseren Spielen
-        und allem über uns. Schau dir alle an und sag uns, welcher Name dir am
-        besten gefällt.
-      </p>
-      <ul class="mt-10 grid gap-6 sm:grid-cols-2">
-        {variants.map((variant) => (
-          <li
-            data-theme={variant.slug}
-            class="rounded-box border border-base-300 bg-base-100 p-6 text-base-content"
-          >
-            <h2 class="text-2xl font-bold">{variant.name}</h2>
-            <p class="mt-2">{variant.tagline}</p>
-            <a class="btn btn-primary mt-6" href={href(`/${variant.slug}/`)}>
-              {variant.name} ansehen
-            </a>
-          </li>
-        ))}
-        <li class="rounded-box border border-base-300 bg-base-100 p-6 text-base-content">
-          <h2 class="text-2xl font-bold">Die Waldstatt</h2>
-          <p class="mt-2">Wie das heutige Einsiedeln entstand</p>
-          <a
-            class="btn btn-primary mt-6"
-            href="https://waldstatt-lab.github.io/waldstatt/"
-          >
-            Die Waldstatt ansehen
+<Layout title={site.name} home>
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1>{site.name}</h1>
+        <p class="tagline">
+          Technik entdecken.
+          <br />
+          Ideen ausprobieren.
+        </p>
+        <p class="actions">
+          <a class="btn btn-primary" href="#spiele">
+            Zu den Spielen
           </a>
-        </li>
-      </ul>
-    </main>
-  </body>
-</html>
+          <a class="btn btn-neutral" href="#lab">
+            Was ist das Lab?
+          </a>
+        </p>
+      </div>
+      <Flask />
+    </div>
+  </div>
+
+  <Clearing id="lab" labelledby="lab-title">
+    <h2 id="lab-title" class="section-title">
+      Was ist das Waldstatt-Lab?
+    </h2>
+    <dl class="name-parts">
+      <div>
+        <dt>Waldstatt</dt>
+        <dd>
+          So hiess Einsiedeln früher. Der heutige Bezirk war die «Waldstatt
+          Einsiedeln», seine Bewohner waren die «Waldleute». Wer hier leben
+          wollte, musste zuerst eine Lichtung schlagen.
+        </dd>
+      </div>
+      <div>
+        <dt>Lab</dt>
+        <dd>
+          Unser Platz zum Ausprobieren. Wir experimentieren mit Technik und
+          bauen Dinge, um zu sehen, ob sie funktionieren. Zum Beispiel am
+          Zukunftstag, wo aus Skizzen auf Papier richtige Spiele wurden.
+        </dd>
+      </div>
+    </dl>
+    <p class="actions">
+      <a class="text-link" href={href("/ueber-uns/")}>
+        Mehr über das Lab
+      </a>
+    </p>
+  </Clearing>
+
+  {events.map(({ event, games }, i) => (
+    <>
+      <div
+        class="forest forest-band"
+        id={i === firstWithGames ? "spiele" : undefined}
+      >
+        <div class="board signpost">
+          <h2 id={event.id}>
+            <a href={href(`/anlaesse/${event.id}/`)}>{event.data.title}</a>
+          </h2>
+          <p>
+            {[event.data.when, event.data.place].filter(Boolean).join(", ")}
+          </p>
+        </div>
+      </div>
+      <Clearing labelledby={event.id}>
+        <p class="lead">{event.data.summary}</p>
+        <p class="actions">
+          <a class="text-link" href={href(`/anlaesse/${event.id}/`)}>
+            Mehr zum Anlass
+          </a>
+        </p>
+        {games.length > 0 && (
+          <div class="games">
+            {games.map((game) => (
+              <GameBoard game={game} />
+            ))}
+          </div>
+        )}
+        <WaldstattHint games={games} />
+      </Clearing>
+    </>
+  ))}
+
+  {planned.map((event) => (
+    <div class="forest forest-band">
+      <div class="board signpost">
+        <h2>{event.data.title}</h2>
+        <p>{event.data.when}</p>
+        <p>{event.data.summary}</p>
+      </div>
+    </div>
+  ))}
+</Layout>

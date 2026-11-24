@@ -7,23 +7,95 @@ JavaScript; a variant may add small scripts for optional effects
 ([ADR 0004](decisions/0004-allow-optional-client-side-scripts-in-a-variant.md)). November Games adds
 keyboard navigation and an interactive canvas background
 ([ADR 0005](decisions/0005-enhance-november-games-with-local-interactions.md)), and
-2raben games a small canvas scene within the rules of ADR 0004. Until
-the studio's name is chosen, the site holds one complete version per name
-candidate ([ADR 0002](decisions/0002-compare-name-candidates-as-variant-routes.md)),
-each with its own pages, layout and theme.
+2raben games a small canvas scene within the rules of ADR 0004. The site
+is that of Waldstatt-Lab
+([ADR 0011](decisions/0011-make-waldstatt-lab-the-site.md)). It also keeps one
+complete version per name candidate from before the name was chosen
+([ADR 0002](decisions/0002-compare-name-candidates-as-variant-routes.md)), each with
+its own pages, layout and theme.
 All text on the site is German, written with Swiss spelling ("ss", not "ß").
 See [CONTRIBUTING.md](../../CONTRIBUTING.md) for checks.
 
+## The Lab's site
+
+The Lab's pages live directly in `src/pages/` and share `src/lab/`, shaped in the
+[pitch](../pitches/waldstatt-lab/pitch--waldstatt-lab.md). They have no scripts. A
+page is a walk through the forest of the Waldstatt game: stretches of dense forest
+with wooden boards, and clearings of open ground for reading.
+
+| Path | Contents |
+| --- | --- |
+| `site.ts` | Name, sentence and description, the links to GitHub and the Waldstatt game, and the command that unlocks scripts in the game |
+| `Layout.astro` | HTML shell with `data-theme="waldstatt-lab"`, header and footer, icon and preview tags; passes the forest pictures' addresses to the stylesheet as custom properties |
+| `forest.ts` | Draws the forest as SVG at build time |
+| `Clearing.astro` | Open ground with the forest's edges above and below |
+| `Flask.astro`, `Rings.astro` | The flask of the avatar, with rising bubbles; a trunk slice with one growth ring per step |
+| `GameBoard.astro` | A game with its screenshot, «spielen» and «Wie es entstand» |
+| `WaldstattHint.astro`, `Mushroom.astro` | A board naming the games that also lie hidden in the Waldstatt game and how to code there; the fly agaric on it and beside the footer's «Fun» |
+| `styles.css`, `theme.css` | Tailwind, typography, daisyUI and the Lab's theme |
+| `variants.css` | The candidates' themes, for the Fun page |
+| `assets/` | The GitHub organization's avatar, and the icon made from it |
+
+`forest.ts` draws trees on a lattice that repeats every 720 × 352 pixels, from a
+fixed seed, so each build draws the same forest. `src/pages/wald/[bild].svg.ts`
+serves five pictures of it, and two that repeat on their own, the footer's undergrowth
+`boden` and the boards' grain `holz`. The five are the repeating forest `wald`, its lower and upper edge
+`rand-unten` and `rand-oben`, and the home page's clearing with the Alp,
+`lichtung-breit` and `lichtung-schmal` (below 64rem). They continue each other as
+long as every background is centred horizontally and anchored at the forest's top
+or bottom edge, and a forest with both edges is one tile (352 pixels) high. The
+trees are our own drawing after the game's; nothing is copied from it. The flask's
+bubbles stand still with reduced motion.
+
+The navigation is a Swiss hiking signpost: yellow plates point to pages, the white one
+without a point says where you are. The name hangs beside it on a board, except on the
+home page, whose title it is. The footer is the forest floor under the last trees, with
+links to all games.
+
+The home page shows one clearing per event held, the newest first, then a board in the
+forest for each planned event. Games with `inWaldstatt` also lie hidden in the Waldstatt
+game; a hint says so on the home page, their event's page and their own page. Only the
+Fun page links to the game itself. «Spiele» in the navigation
+leads to the newest event with games.
+
+### Content
+
+| Collection | One file per | Shown on |
+| --- | --- | --- |
+| [src/content/events/](../../src/content/events/) | Zukunftstag, workshop or other event | home, `/anlaesse/`, and its own page unless `planned` |
+| [src/content/games/](../../src/content/games/) | game; names its event | home, the event's page, its own page, and the candidates (only the Zukunftstag 2026) |
+| [src/content/making/](../../src/content/making/) | game that has a story to tell, named like the game | the game's page |
+
+Pictures lie in `src/assets/`: `games/` holds a screenshot per game, `making/` the
+sketches and further pictures. Sketches come from the game repositories' pitches,
+scaled down and without the photos' metadata. Dates and times in `making` come from
+those photos and from the repositories' commits.
+
+### Adding an event or a game
+
+1. Add `src/content/events/<slug>.md`; the slug becomes the address
+   `/anlaesse/<slug>/`. With `planned: true` the event is announced and has no page.
+   `date` orders the events; visitors read `when`.
+2. For each game, add a screenshot to `src/assets/games/` and
+   `src/content/games/<game>.md` with `event: <slug>`; `inWaldstatt: true` if the
+   Waldstatt game hides it too.
+3. Add `src/content/making/<game>.md` to tell how it was made, with its sketches in
+   `src/assets/making/`.
+4. If a game has its own Pages site, add its path to `reservedSlugs` in
+   `src/variants/index.ts`.
+
 ## Variants
 
-Each name candidate is an independent version of the site
+The name candidates from before the Lab had its name. They are kept as they were and
+listed at `/fun/`. Each name candidate is an independent version of the site
 ([ADR 0003](decisions/0003-give-each-variant-its-own-pages-and-styles.md)) and owns
 two folders named after its slug:
 
 | Path | Contents |
 | --- | --- |
 | `src/pages/<slug>/` | Its pages: `index.astro`, usually `ueber-uns.astro` and `spiele/[game].astro`, and any pages only this variant has |
-| `src/variants/<slug>/meta.ts` | Slug, name, and tagline |
+| `src/variants/<slug>/meta.ts` | Slug, name, tagline, and what the name means and offers (`idea`, for the Fun page) |
+| `src/variants/<slug>/preview.webp` | A picture of its home page, 960 × 600, for the Fun page |
 | `src/variants/<slug>/Layout.astro` | HTML shell with `data-theme="<slug>"`, navigation, footer; loads `styles.css` |
 | `src/variants/<slug>/GameCard.astro` | A game card linking to the game and to its page |
 | `src/variants/<slug>/styles.css` | Tailwind, typography plugin, and daisyUI without built-in themes |
@@ -40,7 +112,7 @@ Waldstatt Games was a variant too, until it grew into a building game and moved
 to its own repository, [waldstatt-lab/waldstatt](https://github.com/waldstatt-lab/waldstatt),
 published at <https://waldstatt-lab.github.io/waldstatt/>
 ([ADR 0010](decisions/0010-move-waldstatt-games-into-its-own-repository.md)).
-The overview links to the game with a card after the variants.
+Of the Lab's pages, only the Fun page links to the game.
 
 ### Schafbock Studio
 
@@ -68,7 +140,7 @@ November Games has a dark synthwave theme with pink, sunset and cyan accents.
 Its home and about pages explain the Nationaler Zukunftstag and the participating
 school levels; the world-saving motto is studio copy, not a claim about game
 content. Game pages retain the shared Markdown and existing play/source links.
-The overview automatically uses the updated theme and tagline.
+The Fun page uses its theme and tagline.
 
 The variant owns `Horizon.astro` (SVG landscape), `landmarks.ts` (the projected
 monastery model, river, label layout and scene placement), `panorama.ts`
@@ -271,7 +343,8 @@ running text stays in the default sans-serif. Its folder
 Game pages show a vignette, the raven's comment and the play button first, then
 the key summary, the key warm-up and the shared game Markdown. The warm-up, like
 Schafbock Studio's key demos, is not the game: no traps, no traffic, no score.
-Focused, it handles the keys from the game's controls table. In Moto Devil's, the
+Focused, it handles the keys from the game's controls table, except Car Drive's
+brake and the second keys for boost and restart, which came later. In Moto Devil's, the
 motorbike accelerates, brakes, tilts into a salto, jumps over a ramp, fires the
 jet while Space is held, turns round and restarts, and crashes back to the start
 on a bad landing. In Car Drive's, the car changes between three lanes, boosts and
@@ -303,14 +376,21 @@ stops flapping with reduced motion. Nothing is stored or sent.
 1. Copy `src/pages/<existing>/` and `src/variants/<existing>/` to the new slug.
 2. Replace the old slug in the copied imports, set `meta.ts`, and rename the theme
    in `theme.css` to the new slug.
-3. List the variant in `src/variants/index.ts` and import its `theme.css` in
-   `src/styles/overview.css`.
+3. Replace `preview.webp` with a picture of its home page.
+4. List the variant in `src/variants/index.ts` and import its `theme.css` in
+   `src/lab/variants.css`.
 
 ## Routes
 
 | Route | Page | Source |
 | --- | --- | --- |
-| `/` | Overview of the variants, each card in the variant's theme, and a card linking to the Waldstatt game | [src/pages/index.astro](../../src/pages/index.astro) |
+| `/` | The Lab: what it is, the events with their games, planned events | [src/pages/index.astro](../../src/pages/index.astro) |
+| `/ueber-uns/` | The name, how the Lab began, how we work | [src/pages/ueber-uns.astro](../../src/pages/ueber-uns.astro) |
+| `/anlaesse/` | All events, planned ones first | [src/pages/anlaesse/index.astro](../../src/pages/anlaesse/index.astro) |
+| `/anlaesse/<event>/` | An event held, with its games | `src/pages/anlaesse/[anlass].astro` |
+| `/spiele/<game>/` | A game: idea, what to expect, controls, play link, and how it was made | `src/pages/spiele/[game].astro` |
+| `/fun/` | The name candidates, each card in its theme, and the Waldstatt game; linked from the footer | [src/pages/fun.astro](../../src/pages/fun.astro) |
+| `/wald/<picture>.svg` | The forest's pictures | `src/pages/wald/[bild].svg.ts` |
 | `/<slug>/` | Home: name, tagline, game cards | `src/pages/<slug>/index.astro` |
 | `/<slug>/ueber-uns/` | About the studio | `src/pages/<slug>/ueber-uns.astro` |
 | `/<slug>/spiele/<game>/` | Game idea, what to expect, controls, play link | `src/pages/<slug>/spiele/[game].astro` |
@@ -320,20 +400,20 @@ configured in [astro.config.mjs](../../astro.config.mjs), for links and installe
 apps from the time Waldstatt Games was a variant
 ([ADR 0010](decisions/0010-move-waldstatt-games-into-its-own-repository.md)).
 
-`/moto-devil/`, `/carrrgh/` and `/waldstatt/` on the same domain belong to the
-games' own Pages sites and take precedence; no route of this site may use them.
+`/moto-devil/`, `/carrrgh/`, `/waldstatt/` and `/waldstatt-go/` on the same domain
+belong to the games' own Pages sites and take precedence; no route of this site may use them.
 
 ## Shared modules
 
 | Path | Responsibility |
 | --- | --- |
-| [src/variants/index.ts](../../src/variants/index.ts) | Lists the variants for the overview; fails the build on unlisted page folders, missing pages, or reserved slugs |
-| [src/variants/types.ts](../../src/variants/types.ts) | `VariantMeta`: slug, name, tagline |
-| [src/content.config.ts](../../src/content.config.ts) | The `games` collection schema: title, tagline, `playUrl`, `sourceUrl`, order |
+| [src/variants/index.ts](../../src/variants/index.ts) | Lists the variants for the Fun page; fails the build on unlisted page folders, missing pages, or reserved slugs |
+| [src/variants/types.ts](../../src/variants/types.ts) | `VariantMeta`: slug, name, tagline, idea |
+| [src/content.config.ts](../../src/content.config.ts) | The schemas of the collections `events`, `games` and `making` |
 | [src/content/games/](../../src/content/games/) | One Markdown file per game; the file name is the route segment |
-| [src/lib/games.ts](../../src/lib/games.ts) | `getGames()`: all games in display order |
+| [src/lib/games.ts](../../src/lib/games.ts) | `getGames()`: all games in display order; `getEventGames()`: those of an event; `getVariantGames()`: those the variants show |
+| [src/lib/events.ts](../../src/lib/events.ts) | `getHeldEvents()` and `getPlannedEvents()` |
 | [src/lib/url.ts](../../src/lib/url.ts) | `href()`: prefixes internal paths with the base path |
-| [src/styles/overview.css](../../src/styles/overview.css) | The overview's stylesheet; imports every variant's theme |
 | [astro.config.mjs](../../astro.config.mjs) | Site URL and base path from `SITE_URL` / `BASE_PATH`, trailing slashes, Tailwind |
 
 ## Conventions

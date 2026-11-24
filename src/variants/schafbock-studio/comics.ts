@@ -5,7 +5,7 @@
  * game's text changes.
  */
 import type { CollectionEntry } from "astro:content";
-import { getGames } from "../../lib/games";
+import { getVariantGames } from "../../lib/games";
 
 /** The ram's poses, as Ram.astro draws them. */
 export type RamPose = "landing" | "moto" | "car" | "sketch";
@@ -99,7 +99,7 @@ export const comics: Record<string, GameComic> = {
 export async function getComicGames(): Promise<
   { game: CollectionEntry<"games">; comic: GameComic }[]
 > {
-  return (await getGames()).map((game) => {
+  return (await getVariantGames()).map((game) => {
     const comic = comics[game.id];
     if (!comic) {
       throw new Error(

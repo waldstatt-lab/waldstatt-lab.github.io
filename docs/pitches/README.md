@@ -46,6 +46,7 @@ The pitches for Waldstatt Games moved with it to
 
 | Pitch | Status |
 | --- | --- |
+| [Waldstatt-Lab: the Lab in the forest](waldstatt-lab/pitch--waldstatt-lab.md) | implemented |
 | [Schafbock Studio: pop-art superhero](schafbock-studio/pitch--pop-art-superhero.md) | Implemented |
 | [November Games: Zukunftstag im Cyberpunk-Stil](november-games/pitch--zukunftstag-cyberpunk.md) | implemented |
 | [Egg Settlers: a strategy-game variant where settlers build a giant egg](egg-settlers/pitch--egg-settlers.md) | implemented |
