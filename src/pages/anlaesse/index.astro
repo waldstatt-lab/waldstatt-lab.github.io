@@ -1,0 +1,63 @@
+---
+import Clearing from "../../lab/Clearing.astro";
+import Layout from "../../lab/Layout.astro";
+import { site } from "../../lab/site";
+import { getHeldEvents, getPlannedEvents } from "../../lib/events";
+import { getEventGames } from "../../lib/games";
+import { href } from "../../lib/url";
+
+const planned = await getPlannedEvents();
+const held = await Promise.all(
+  (await getHeldEvents()).map(async (event) => ({
+    event,
+    games: await getEventGames(event.id),
+  })),
+);
+---
+
+<Layout
+  title={`Anlässe – ${site.name}`}
+  description="Die Anlässe des Waldstatt-Labs in Einsiedeln und was dabei entstanden ist."
+>
+  <Clearing>
+    <h1 class="page-title">Anlässe</h1>
+    <p class="lead">
+      Im Lab wird ausprobiert, wenn Leute zusammenkommen. Für jeden Anlass
+      schlagen wir eine Lichtung, und was dabei entsteht, bleibt stehen.
+    </p>
+    <ul class="event-list">
+      {planned.map((event) => (
+        <li class="planned">
+          <p class="meta">Geplant: {event.data.when}</p>
+          <h2>{event.data.title}</h2>
+          <p class="mt-2">{event.data.summary}</p>
+        </li>
+      ))}
+      {held.map(({ event, games }) => (
+        <li>
+          <p class="meta">
+            {[event.data.when, event.data.place].filter(Boolean).join(", ")}
+          </p>
+          <h2>
+            <a href={href(`/anlaesse/${event.id}/`)}>{event.data.title}</a>
+          </h2>
+          <p class="mt-2">{event.data.summary}</p>
+          {games.length > 0 && (
+            <p class="mt-2">
+              Entstanden sind{" "}
+              {games.map((game, i) => (
+                <>
+                  {i > 0 && (i === games.length - 1 ? " und " : ", ")}
+                  <a class="text-link" href={href(`/spiele/${game.id}/`)}>
+                    {game.data.title}
+                  </a>
+                </>
+              ))}
+              .
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  </Clearing>
+</Layout>

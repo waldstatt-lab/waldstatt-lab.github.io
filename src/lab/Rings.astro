@@ -1,0 +1,25 @@
+---
+/** A slice of a trunk with as many growth rings as steps so far. Decorative. */
+interface Props {
+  count: number;
+}
+const { count } = Astro.props;
+const rings = Array.from(
+  { length: count },
+  (_, i) => 3 + (i * 13) / Math.max(count, 1),
+);
+---
+
+<svg class="rings" viewBox="-20 -20 40 40" aria-hidden="true" focusable="false">
+  <circle r="18.5" fill="#4b301d"></circle>
+  <circle r="16" fill="#d8b27a"></circle>
+  {rings.map((r) => (
+    <circle
+      r={Math.round(r * 10) / 10}
+      fill="none"
+      stroke="#8a6238"
+      stroke-width="1.1"
+    />
+  ))}
+  <circle r="1.4" fill="#8a6238"></circle>
+</svg>

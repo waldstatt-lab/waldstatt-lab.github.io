@@ -34,12 +34,13 @@ does not prove correctness.
 | Record | Status |
 | --- | --- |
 | [0001 — Build a static site with Astro and daisyUI on GitHub Pages](0001-build-a-static-site-with-astro-and-daisyui.md) | accepted; amended by 0003, 0004, 0005, 0006, 0010 |
-| [0002 — Compare name candidates as variant routes that share the game content](0002-compare-name-candidates-as-variant-routes.md) | accepted; amended by 0003 |
-| [0003 — Give each variant its own pages, layout and stylesheet](0003-give-each-variant-its-own-pages-and-styles.md) | accepted; amends 0001, 0002 |
+| [0002 — Compare name candidates as variant routes that share the game content](0002-compare-name-candidates-as-variant-routes.md) | accepted; amended by 0003, 0011 |
+| [0003 — Give each variant its own pages, layout and stylesheet](0003-give-each-variant-its-own-pages-and-styles.md) | accepted; amends 0001, 0002; amended by 0011 |
 | [0004 — Allow optional client-side scripts in a variant](0004-allow-optional-client-side-scripts-in-a-variant.md) | accepted; amends 0001; amended by 0005, 0006, 0010 |
 | [0005 — Enhance November Games with local interactions](0005-enhance-november-games-with-local-interactions.md) | accepted; amends 0001, 0004 |
 | [0006 — Make Waldstatt Games a browser game that gates its content](0006-make-waldstatt-games-a-browser-game.md) | superseded by 0010; amends 0001, 0004; amended by 0007 |
 | [0007 — Save Waldstatt Games in IndexedDB](0007-save-waldstatt-games-in-indexeddb.md) | superseded by 0010; amends 0006; amended by 0008 |
 | [0008 — Keep named Waldstatt saves in a database of their own, and as files](0008-keep-named-waldstatt-saves-and-files.md) | superseded by 0010; amends 0007; amended by 0009 |
 | [0009 — Let visitors bind the Waldstatt's keys, kept in a settings database](0009-keep-the-waldstatt-keymap-in-a-settings-database.md) | superseded by 0010; amends 0008 |
-| [0010 — Move Waldstatt Games into its own repository](0010-move-waldstatt-games-into-its-own-repository.md) | accepted; supersedes 0006, 0007, 0008, 0009; amends 0001, 0004 |
+| [0010 — Move Waldstatt Games into its own repository](0010-move-waldstatt-games-into-its-own-repository.md) | accepted; supersedes 0006, 0007, 0008, 0009; amends 0001, 0004; amended by 0011 |
+| [0011 — Make Waldstatt-Lab the site and keep the name candidates under Fun](0011-make-waldstatt-lab-the-site.md) | accepted; amends 0002, 0003, 0010 |

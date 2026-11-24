@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import type { Game } from "../lib/games";
+import { href } from "../lib/url";
+
+interface Props {
+  game: Game;
+  /** The heading's level on the page. */
+  level?: 2 | 3;
+}
+const { game, level = 3 } = Astro.props;
+const Heading = `h${level}` as "h2" | "h3";
+const making = await getEntry("making", game.id);
+const page = href(`/spiele/${game.id}/`);
+---
+
+<article class="game-board">
+  <a class="frame" href={page} tabindex="-1" aria-hidden="true">
+    <Image
+      src={game.data.screenshot}
+      alt=""
+      widths={[420, 640, 960]}
+      sizes="(min-width: 60rem) 33rem, 94vw"
+    />
+  </a>
+  <Heading class="game-title">
+    <a href={page}>{game.data.title}</a>
+  </Heading>
+  <p>{game.data.tagline}</p>
+  <p class="actions">
+    <a class="btn btn-primary" href={game.data.playUrl}>
+      {game.data.title} spielen
+    </a>
+    <a class="btn btn-neutral" href={making ? `${page}#entstehung` : page}>
+      {making ? "Wie es entstand" : "Mehr zum Spiel"}
+    </a>
+  </p>
+</article>

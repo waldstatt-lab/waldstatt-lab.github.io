@@ -4,6 +4,10 @@ tagline: Drei Spuren, viel Verkehr und ein Boost im richtigen Moment.
 playUrl: https://waldstatt-lab.github.io/carrrgh/
 sourceUrl: https://github.com/waldstatt-lab/carrrgh
 order: 2
+event: zukunftstag-2026
+screenshot: ../../assets/games/car-drive.webp
+screenshotAlt: Eine dreispurige Strasse von oben. Das blaue Auto fährt auf der rechten Spur, zwei rote Autos auf der mittleren. Links stehen Herzen, Strecke und Boost-Anzeige.
+inWaldstatt: true
 ---
 
 ## Die Idee
@@ -29,8 +33,9 @@ drei Herzen und eine Boost-Anzeige.
 
 ## Steuerung
 
-| Aktion   | Tastatur     | Controller                |
-| -------- | ------------ | ------------------------- |
-| Lenken   | A/D oder ←/→ | Linker Stick, Steuerkreuz |
-| Boost    | Leertaste    | Untere Taste (A/Kreuz)    |
-| Neustart | R            | Select                    |
+| Aktion   | Tastatur            | Controller                |
+| -------- | ------------------- | ------------------------- |
+| Lenken   | A/D oder ←/→        | Linker Stick, Steuerkreuz |
+| Boost    | Leertaste, W oder ↑ | Untere Taste (A/Kreuz)    |
+| Bremsen  | S oder ↓            | –                         |
+| Neustart | R oder Rücktaste    | Select                    |

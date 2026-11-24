@@ -1,0 +1,57 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import Clearing from "../../lab/Clearing.astro";
+import GameBoard from "../../lab/GameBoard.astro";
+import Layout from "../../lab/Layout.astro";
+import WaldstattHint from "../../lab/WaldstattHint.astro";
+import { site } from "../../lab/site";
+import { getHeldEvents } from "../../lib/events";
+import { getEventGames } from "../../lib/games";
+import { href } from "../../lib/url";
+
+export const getStaticPaths = (async () =>
+  (await getHeldEvents()).map((event) => ({
+    params: { anlass: event.id },
+    props: { event },
+  }))) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { event } = Astro.props;
+const { Content } = await render(event);
+const games = await getEventGames(event.id);
+---
+
+<Layout
+  title={`${event.data.title} – ${site.name}`}
+  description={event.data.summary}
+>
+  <Clearing>
+    <h1 class="page-title">{event.data.title}</h1>
+    <p class="meta mt-3">
+      {[event.data.when, event.data.place].filter(Boolean).join(", ")}
+    </p>
+    <p class="lead">{event.data.summary}</p>
+    <article class="article prose">
+      <Content />
+    </article>
+    {games.length > 0 && (
+      <section class="mt-16" aria-labelledby="spiele">
+        <h2 id="spiele" class="section-title">
+          Was entstanden ist
+        </h2>
+        <div class="games">
+          {games.map((game) => (
+            <GameBoard game={game} />
+          ))}
+        </div>
+        <WaldstattHint games={games} />
+      </section>
+    )}
+    <p class="mt-14">
+      <a class="text-link" href={href("/anlaesse/")}>
+        Alle Anlässe
+      </a>
+    </p>
+  </Clearing>
+</Layout>

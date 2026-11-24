@@ -1,0 +1,107 @@
+---
+import { Image } from "astro:assets";
+import avatar from "../lab/assets/avatar.webp";
+import Clearing from "../lab/Clearing.astro";
+import Layout from "../lab/Layout.astro";
+import Rings from "../lab/Rings.astro";
+import { site } from "../lab/site";
+import { href } from "../lib/url";
+
+const steps = [
+  {
+    title: "Skizze",
+    text: "Jede Idee beginnt auf Papier. Ein Stift genügt, schön muss es nicht sein.",
+  },
+  {
+    title: "Pitch",
+    text: "Daraus schreiben wir einen kurzen Plan: Was fehlt, wie könnte die Lösung aussehen, wo könnte man sich verrennen, und was lassen wir bewusst weg?",
+  },
+  {
+    title: "Prototyp",
+    text: "Dann bauen wir die kleinste Version, die man ausprobieren kann. Beim Programmieren hilft eine KI mit.",
+  },
+  {
+    title: "Ausprobieren",
+    text: "Was macht Spass, was ist unfair, was fehlt noch? Aus den Antworten wird die nächste Skizze.",
+  },
+];
+---
+
+<Layout
+  title={`Über uns – ${site.name}`}
+  description="Was das Waldstatt-Lab ist, woher der Name kommt und wie bei uns aus einer Skizze etwas wird, das man ausprobieren kann."
+>
+  <Clearing>
+    <header class="about-head">
+      <div>
+        <h1 class="page-title">Über das Lab</h1>
+        <p class="lead">
+          Das Waldstatt-Lab ist ein Ort zum Ausprobieren in Einsiedeln. Wir
+          experimentieren mit Technik und machen aus Ideen etwas, das man
+          anfassen, spielen oder weiterbauen kann.
+        </p>
+      </div>
+      <div class="frame justify-self-center">
+        <Image
+          src={avatar}
+          alt="Das Zeichen des Waldstatt-Labs: ein dichter Tannenwald in Pixeln, mittendrin ein Glaskolben mit blaugrüner Flüssigkeit."
+          widths={[320, 460]}
+          sizes="22rem"
+          style="aspect-ratio: 1"
+        />
+      </div>
+    </header>
+
+    <article class="article prose">
+      <h2>Warum Waldstatt?</h2>
+      <p>
+        «Waldstatt» ist die historische Bezeichnung für Einsiedeln. Der heutige
+        Bezirk wurde früher «Waldstatt Einsiedeln» genannt, seine Bewohner
+        «Waldleute». Sie haben mitten im Wald Lichtungen geschlagen und
+        angefangen zu bauen. So ähnlich machen wir es auch, nur mit Technik.
+      </p>
+      <h2>Warum Lab?</h2>
+      <p>
+        In einem Labor darf etwas schiefgehen. Wir probieren aus, was uns
+        interessiert: Spiele, Programmiersprachen, Werkzeuge, KI. Manches davon
+        wird gross, manches bleibt ein Versuch.
+      </p>
+      <h2>Wie es angefangen hat</h2>
+      <p>
+        Am{" "}
+        <a href={href("/anlaesse/zukunftstag-2026/")}>
+          Nationalen Zukunftstag 2026
+        </a>{" "}
+        haben Schülerinnen und Schüler bei der ISE AG in Einsiedeln ihre eigenen
+        Spiele entwickelt. Daraus ist das Lab geworden. Weitere Zukunftstage,
+        Workshops und andere <a href={href("/anlaesse/")}>Anlässe</a> sollen
+        hier ihren Platz bekommen.
+      </p>
+    </article>
+
+    <section class="mt-16" aria-labelledby="arbeiten">
+      <h2 id="arbeiten" class="section-title">
+        Wie wir arbeiten
+      </h2>
+      <ol class="trail">
+        {steps.map((step, i) => (
+          <li>
+            <Rings count={i + 1} />
+            <h3>{step.title}</h3>
+            <p class="mt-2">{step.text}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <article class="article prose">
+      <h2>Womit wir bauen</h2>
+      <p>
+        Die Spiele vom Zukunftstag sind in Rust mit der Spiel-Engine Bevy
+        geschrieben und laufen als WebAssembly im Browser. Der Quellcode von
+        allem, auch von dieser Seite, liegt offen auf{" "}
+        <a href={site.github}>GitHub</a>, samt Skizzen und Pitches.
+      </p>
+    </article>
+  </Clearing>
+</Layout>

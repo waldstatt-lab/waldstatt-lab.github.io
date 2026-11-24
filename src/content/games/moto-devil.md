@@ -4,6 +4,10 @@ tagline: Ein Stuntbike-Spiel, dessen Levels dich anlügen.
 playUrl: https://waldstatt-lab.github.io/moto-devil/
 sourceUrl: https://github.com/waldstatt-lab/moto-devil
 order: 1
+event: zukunftstag-2026
+screenshot: ../../assets/games/moto-devil.webp
+screenshotAlt: Ein Motorrad in Seitenansicht fährt eine Rampe hoch, dahinter klafft ein Graben. Die Figur darauf trägt rote Hörner.
+inWaldstatt: true
 ---
 
 ## Die Idee

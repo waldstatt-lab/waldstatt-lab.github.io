@@ -2,6 +2,7 @@
 tags: [adr]
 status: accepted
 date: 2026-11-19
+amended-by: [0011-make-waldstatt-lab-the-site.md]
 supersedes:
   - 0006-make-waldstatt-games-a-browser-game.md
   - 0007-save-waldstatt-games-in-indexeddb.md
@@ -19,6 +20,10 @@ sources:
 ---
 
 # 0010 — Move Waldstatt Games into its own repository
+
+> Amended by [ADR 0011](0011-make-waldstatt-lab-the-site.md): the overview is gone.
+> Of the Lab's pages, only the Fun page links to the Waldstatt game; others name
+> it and lead there.
 
 ## Context
 

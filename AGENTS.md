@@ -1,12 +1,13 @@
 # Working on waldstatt-lab.github.io
 
-The website of a hobby game studio. It links the games programmed at the
-Nationaler Zukunftstag, which are built and deployed from their own repositories:
+The website of Waldstatt-Lab, a place to experiment with technology in Einsiedeln. It
+shows the games programmed at the Nationaler Zukunftstag and how they were made. They
+are built and deployed from their own repositories:
 Moto Devil (<https://waldstatt-lab.github.io/moto-devil/>, `waldstatt-lab/moto-devil`) and Car
 Drive (<https://waldstatt-lab.github.io/carrrgh/>, `waldstatt-lab/carrrgh`).
 The organization homepage is <https://waldstatt-lab.github.io/>. The site is static, built with Astro 7,
-Tailwind CSS 4 and daisyUI 5. Until the studio's name is chosen, it holds one
-complete version per name candidate under `/<variant>/`. Use the versions pinned
+Tailwind CSS 4 and daisyUI 5. It also keeps one complete version per earlier name
+candidate under `/<variant>/`, listed at `/fun/`. Use the versions pinned
 in `package.json` and `package-lock.json`.
 
 ## Start here
@@ -16,13 +17,15 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) and the
 Consult the [architectural decision records (ADRs)](docs/architecture/decisions/README.md)
 for significant choices and their rationale.
 
+- `src/pages/*.astro`, `src/pages/spiele/`, `src/pages/anlaesse/` and `src/lab/`: the
+  Lab's pages, and their layout, components, styles and forest drawings.
 - `src/pages/<slug>/` and `src/variants/<slug>/`: one variant's pages, and its
   meta, layout, components, stylesheet and daisyUI theme.
-- `src/variants/index.ts`: the list of variants for the overview, with build checks.
-- `src/pages/index.astro` and `src/styles/overview.css`: the overview at `/`.
-- `src/content/games/` and `src/content.config.ts`: one German Markdown file per
-  game and its schema, shared by all variants.
-- `src/lib/`: shared helpers, `getGames()` and `href()` for base-path links.
+- `src/variants/index.ts`: the list of variants for the Fun page, with build checks.
+- `src/content/` and `src/content.config.ts`: one German Markdown file per event, per
+  game, and per story of how a game was made, with their schemas. The game texts are
+  shared with the variants.
+- `src/lib/`: shared helpers, such as `getGames()`, and `href()` for base-path links.
 - `astro.config.mjs`, `package.json`, `.prettierrc.json`: build, dependencies,
   and formatting.
 - `.mise/config.toml` and `.mise/tasks/`: pinned Node.js and the `install`, `dev`,
@@ -42,16 +45,18 @@ place; record their sources and hashes in `skills-lock.json` when adding them.
 
 Keep the site static: no server, no client-side framework, and JavaScript only
 where a feature cannot work without it. Link to the games' deployments; do not copy
-game builds or assets into this repository. Build only what an accepted pitch or a
-concrete fix needs, and distinguish implemented behavior from ideas and pitches.
+game builds or assets into this repository. Sketches from the games' pitches and
+screenshots may be copied, scaled down and without metadata. Build only what an
+accepted pitch or a concrete fix needs, and distinguish implemented behavior from ideas and pitches.
 
 Write all site text in German with Swiss spelling ("ss", not "ß"). Describe the
 games from their own repositories' documentation; do not invent features. Link
 internal pages through `href()` so the site works under a base path.
 
-Variants are independent: change a variant only inside `src/pages/<slug>/` and
-`src/variants/<slug>/`, and never import another variant's files. A change meant
-for every variant must be made in each one. Follow
+Follow [Adding an event or a game](docs/architecture/README.md#adding-an-event-or-a-game)
+for new content. Variants are independent: change a variant only inside
+`src/pages/<slug>/` and `src/variants/<slug>/`, and never import another variant's files or the Lab's. A
+change meant for every variant must be made in each one. Follow
 [Adding a variant](docs/architecture/README.md#adding-a-variant) for new candidates.
 
 Update architecture documentation alongside changes to structure or behavior.

@@ -4,7 +4,7 @@
  * ravens retell it and add nothing. Review it whenever a game's text changes.
  */
 import type { CollectionEntry } from "astro:content";
-import { getGames } from "../../lib/games";
+import { getVariantGames } from "../../lib/games";
 
 export interface GameRavens {
   /** The pixel vignette and module icon, from scenes.ts. */
@@ -45,7 +45,7 @@ export const ravens: Record<string, GameRavens> = {
 export async function getRavenGames(): Promise<
   { game: CollectionEntry<"games">; ravens: GameRavens }[]
 > {
-  return (await getGames()).map((game) => {
+  return (await getVariantGames()).map((game) => {
     const entry = ravens[game.id];
     if (!entry) {
       throw new Error(

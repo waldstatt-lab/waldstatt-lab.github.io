@@ -1,0 +1,6 @@
+/* The name candidates' themes, for their cards on the Fun page. Add the import
+   when adding a variant. */
+@import "../variants/schafbock-studio/theme.css";
+@import "../variants/egg-settlers/theme.css";
+@import "../variants/november-games/theme.css";
+@import "../variants/2raben-games/theme.css";

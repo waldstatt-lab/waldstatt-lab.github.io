@@ -1,11 +1,11 @@
 ---
-import { getGames } from "../../lib/games";
+import { getVariantGames } from "../../lib/games";
 import { href } from "../../lib/url";
 import GameCard from "../../variants/november-games/GameCard.astro";
 import Layout from "../../variants/november-games/Layout.astro";
 import meta from "../../variants/november-games/meta";
 
-const games = await getGames();
+const games = await getVariantGames();
 ---
 
 <Layout

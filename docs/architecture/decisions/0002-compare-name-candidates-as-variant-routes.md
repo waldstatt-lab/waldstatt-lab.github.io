@@ -2,7 +2,9 @@
 tags: [adr]
 status: accepted
 date: 2026-11-15
-amended-by: [0003-give-each-variant-its-own-pages-and-styles.md]
+amended-by:
+  - 0003-give-each-variant-its-own-pages-and-styles.md
+  - 0011-make-waldstatt-lab-the-site.md
 sources:
   - src/variants.ts
   - src/pages/index.astro
@@ -16,6 +18,10 @@ sources:
 > each variant now has its own pages in `src/pages/<slug>/` and its own layout,
 > components and theme in `src/variants/<slug>/`; `src/variants.ts` and
 > `src/pages/[variant]/` were replaced by `src/variants/index.ts` and those folders.
+>
+> Amended by [ADR 0011](0011-make-waldstatt-lab-the-site.md): the name is
+> Waldstatt-Lab, whose pages are at `/`. The candidates stay at their addresses,
+> listed at `/fun/`, and show only the games of the Zukunftstag 2026.
 
 ## Context
 

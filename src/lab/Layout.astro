@@ -1,0 +1,143 @@
+---
+import "./styles.css";
+import { getGames } from "../lib/games";
+import { href } from "../lib/url";
+import avatar from "./assets/avatar.webp";
+import favicon from "./assets/favicon.png";
+import Flask from "./Flask.astro";
+import Mushroom from "./Mushroom.astro";
+import { site } from "./site";
+
+interface Props {
+  title: string;
+  description?: string;
+  /** The home page brings its own forest with the clearing. */
+  home?: boolean;
+}
+
+const { title, description = site.description, home = false } = Astro.props;
+const path = Astro.url.pathname;
+const games = await getGames();
+const navigation = [
+  { label: "Spiele", path: "/#spiele", current: path.includes("/spiele/") },
+  {
+    label: "Anlässe",
+    path: "/anlaesse/",
+    current: path.includes("/anlaesse/"),
+  },
+  {
+    label: "Über uns",
+    path: "/ueber-uns/",
+    current: path.endsWith("/ueber-uns/"),
+  },
+];
+/* The forest's pictures, as custom properties so the stylesheet can use them
+   under any base path. */
+const pictures = [
+  "wald",
+  "rand-unten",
+  "rand-oben",
+  "lichtung-breit",
+  "lichtung-schmal",
+  "boden",
+  "holz",
+]
+  .map((name) => `--${name}: url(${href(`/wald/${name}.svg`)})`)
+  .join(";");
+---
+
+<!doctype html>
+<html lang="de" data-theme="waldstatt-lab">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#152b1c" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL(avatar.src, Astro.site)} />
+    <link rel="icon" type="image/png" href={favicon.src} />
+    <title>{title}</title>
+  </head>
+  <body style={pictures}>
+    <a class="skip-link" href="#inhalt">
+      Zum Inhalt
+    </a>
+    <header class:list={["site-header", { "forest forest-top": !home }]}>
+      <div class="header-inner">
+        {/* The home page has the name as its title. */}
+        {!home && (
+          <a class="board brand" href={href("/")}>
+            <Flask class="brand-flask" />
+            {site.name}
+          </a>
+        )}
+        {/* A hiking signpost: yellow plates point to pages, the white one says
+            where you are. */}
+        <nav class="waymark" aria-label="Hauptnavigation">
+          <ul>
+            {navigation.map((item) => (
+              <li>
+                <a
+                  href={href(item.path)}
+                  aria-current={item.current ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="inhalt" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-name">
+          <Flask class="footer-flask" />
+          <div>
+            <p class="name">{site.name}</p>
+            <p>{site.tagline}</p>
+          </div>
+        </div>
+        <nav aria-label="Weitere Seiten" class="footer-links">
+          <div>
+            <p class="label">Spiele</p>
+            <ul>
+              {games.map((game) => (
+                <li>
+                  <a href={href(`/spiele/${game.id}/`)}>{game.data.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p class="label">Lab</p>
+            <ul>
+              <li>
+                <a href={href("/ueber-uns/")}>Über uns</a>
+              </li>
+              <li>
+                <a href={href("/anlaesse/")}>Anlässe</a>
+              </li>
+              <li>
+                <a href={site.github}>GitHub</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <a
+          class="fun-link"
+          href={href("/fun/")}
+          aria-current={path.endsWith("/fun/") ? "page" : undefined}
+        >
+          <Mushroom />
+          Fun
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>

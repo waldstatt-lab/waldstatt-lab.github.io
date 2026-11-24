@@ -5,8 +5,9 @@ commitment to build; shape concrete work as a [pitch](pitches/README.md) first.
 
 ## Purpose
 
-The website of our hobby game studio. Its main job is to let visitors find
-and play the games programmed at the Nationaler Zukunftstag. Each game is built
+The website of Waldstatt-Lab, where we experiment with technology and try things
+out. Its main job is to explain the Lab, and to let visitors find and play the games
+programmed at the Nationaler Zukunftstag and see how they were made. Each game is built
 and deployed to GitHub Pages from its own repository:
 
 - Moto Devil: <https://waldstatt-lab.github.io/moto-devil/> ([source](https://github.com/waldstatt-lab/moto-devil))
@@ -14,16 +15,15 @@ and deployed to GitHub Pages from its own repository:
 
 The site links to these deployments; it does not build, host, or copy the games.
 
-## Choosing a name
+## The name
 
-The GitHub organization is Waldstatt Lab. The site still hosts the four studio
-name proposals for comparison: Schafbock Studio, Egg Settlers, November Games,
-and 2raben games.
+«Waldstatt» is the historical name of Einsiedeln; the «Lab» is for trying things
+out. Four name proposals from before stay on the site, under `/fun/`: Schafbock
+Studio, Egg Settlers, November Games, and 2raben games.
 
 ## Possibilities
 
 Directions worth exploring later; none is a commitment:
 
-- Sketches and screenshots of the games on their pages.
-- A page for each new game the studio makes.
+- Further events: the next Zukunftstag, workshops, campaigns.
 - News about the games' development.

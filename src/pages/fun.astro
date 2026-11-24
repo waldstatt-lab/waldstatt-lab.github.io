@@ -1,0 +1,114 @@
+---
+import "../lab/variants.css";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import waldstatt from "../assets/games/waldstatt.webp";
+import Clearing from "../lab/Clearing.astro";
+import Layout from "../lab/Layout.astro";
+import Mushroom from "../lab/Mushroom.astro";
+import { site } from "../lab/site";
+import { getGames } from "../lib/games";
+import { href } from "../lib/url";
+import { variants } from "../variants";
+
+const previews = import.meta.glob<{ default: ImageMetadata }>(
+  "../variants/*/preview.webp",
+  { eager: true },
+);
+const hidden = new Intl.ListFormat("de", { type: "conjunction" }).format(
+  (await getGames())
+    .filter((game) => game.data.inWaldstatt)
+    .map((game) => game.data.title),
+);
+const cards = variants.map((variant) => {
+  const preview = previews[`../variants/${variant.slug}/preview.webp`];
+  if (!preview) {
+    throw new Error(`src/variants/${variant.slug}/preview.webp is missing`);
+  }
+  return { ...variant, preview: preview.default };
+});
+---
+
+<Layout
+  title={`Fun – ${site.name}`}
+  description="Wie das Waldstatt-Lab auch hätte heissen können: vier Namensvorschläge, jeder als eigene Version dieser Website. Und die Waldstatt, ein Aufbauspiel im Wald um Einsiedeln."
+>
+  <Clearing>
+    <h1 class="page-title">Fun</h1>
+    <p class="lead">
+      Das Lab hätte auch ganz anders heissen können. Für jeden Namensvorschlag
+      haben wir eine eigene Version der Website gebaut. Der Name steht
+      inzwischen fest, aber zum Wegwerfen sind sie zu schade.
+    </p>
+    <ul class="variants">
+      {cards.map((variant) => (
+        <li class="variant" data-theme={variant.slug}>
+          <Image
+            src={variant.preview}
+            alt={`Die Startseite von ${variant.name}`}
+            widths={[480, 720, 960]}
+            sizes="(min-width: 52rem) 33rem, 94vw"
+          />
+          <div>
+            <h2>{variant.name}</h2>
+            <p class="tagline">{variant.tagline}</p>
+            <p class="idea">{variant.idea}</p>
+            <a class="btn btn-primary" href={href(`/${variant.slug}/`)}>
+              {variant.name} ansehen
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </Clearing>
+
+  <div class="forest forest-band">
+    <div class="board signpost">
+      <h2 id="waldstatt">Die Waldstatt</h2>
+      <p>Zum Selberroden</p>
+    </div>
+  </div>
+  <Clearing labelledby="waldstatt">
+    <div class="feature">
+      <div>
+        <p class="lead">
+          Ein fünfter Vorschlag, Waldstatt Games, ist zu einem eigenen Spiel
+          geworden: einem Aufbauspiel im Wald um Einsiedeln.
+        </p>
+        <p class="mt-4">
+          Du fällst Bäume, baust Häuser und siehst zu, wie aus der Lichtung ein
+          Dorf wird. Unter den Tannen liegen auch die Spiele vom Zukunftstag,{" "}
+          {hidden}. Leg ihre Schriftrollen frei, dann kannst du für jedes Spiel
+          ein Spielhaus bauen.
+        </p>
+        <p class="actions">
+          <a class="btn btn-primary" href={site.waldstatt}>
+            Die Waldstatt spielen
+          </a>
+        </p>
+      </div>
+      <a class="frame" href={site.waldstatt} tabindex="-1" aria-hidden="true">
+        <Image
+          src={waldstatt}
+          alt=""
+          widths={[420, 640, 960]}
+          sizes="(min-width: 60rem) 38rem, 94vw"
+        />
+      </a>
+    </div>
+    <aside class="board hint">
+      <Mushroom />
+      <div>
+        <p>
+          Programmieren kann man dort auch. Ein Tipp für die Tastatur:{" "}
+          <code class="command">{site.waldstattCode}</code>
+        </p>
+        <p class="mt-2">
+          Der Befehl erinnert an <a href={site.wirth}>Niklaus Wirth</a>, den
+          Schweizer Informatiker, der die Programmiersprache Pascal erfunden
+          hat. Danach steht im Menü des Spiels «Skripte …».
+        </p>
+      </div>
+    </aside>
+  </Clearing>
+</Layout>

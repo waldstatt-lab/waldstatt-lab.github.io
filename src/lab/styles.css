@@ -1,0 +1,855 @@
+/* The Lab's stylesheet, loaded by its own pages through Layout.astro. A page is
+   a walk through the forest: dense forest with wooden boards, and clearings
+   of open ground where one reads. */
+@import "tailwindcss";
+@import "./theme.css";
+@import "@fontsource/grenze/latin-500.css";
+@import "@fontsource/grenze/latin-600.css";
+@import "@fontsource/grenze/latin-700.css";
+@import "@fontsource/atkinson-hyperlegible-next/latin-400.css";
+@import "@fontsource/atkinson-hyperlegible-next/latin-400-italic.css";
+@import "@fontsource/atkinson-hyperlegible-next/latin-700.css";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+  themes: false;
+}
+
+@theme {
+  --font-sans: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+  --font-display: "Grenze", Georgia, serif;
+}
+
+:root {
+  --floor: #152b1c;
+  --grass: #7ea652;
+  --wood: #3b2716;
+  --wood-light: #5a3a20;
+  --wood-edge: #22150a;
+  --bark: #f0e2be;
+  --glow: #ffe08a;
+  --nail: radial-gradient(circle, #b89b70 1px, #170c04 1.5px 2.5px, #0000 3px);
+  /* Dark enough for the green at a clearing's edges. */
+  --link: #0a4f4d;
+  --sign: #f7cf1d;
+  --sign-edge: #a98500;
+  /* How far the forest reaches into a clearing from above and from below. */
+  --edge-out: 220px;
+  --edge-in: 150px;
+}
+
+html {
+  background: var(--floor);
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--color-base-100);
+  color: var(--color-base-content);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+main:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+.board:focus-visible,
+.board :focus-visible,
+.forest :focus-visible,
+.hero :focus-visible,
+.site-header :focus-visible,
+.site-footer :focus-visible,
+.skip-link:focus-visible {
+  outline-color: var(--glow);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 10;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--wood);
+  color: var(--bark);
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+
+/* --- Forest ----------------------------------------------------------------- */
+
+/* Pictures of one forest continue each other when their background's origin
+   lies at the forest's middle and at its top or bottom edge. A band has the
+   height of one tile, so both its edges fit. */
+.forest {
+  background: var(--floor) var(--wald) 50% 0 repeat;
+}
+.forest-top {
+  background-position: 50% 100%;
+}
+.forest-band {
+  display: grid;
+  place-items: center;
+  height: 352px;
+  padding: 0 1rem;
+}
+
+.clearing {
+  position: relative;
+  background:
+    var(--rand-unten) 50% 0 repeat-x,
+    var(--rand-oben) 50% 100% repeat-x,
+    linear-gradient(
+      var(--grass),
+      var(--color-base-100) 21rem,
+      var(--color-base-100) calc(100% - 14rem),
+      var(--grass)
+    );
+}
+.clearing-inner {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: calc(var(--edge-out) + 1.5rem) 1.25rem calc(var(--edge-in) + 4rem);
+}
+
+/* --- Wooden boards ---------------------------------------------------------- */
+
+.board {
+  border: 2px solid var(--wood-edge);
+  border-radius: 0.3rem;
+  /* A nail in each corner, on the board's grain. */
+  background:
+    var(--nail) 4px 4px / 8px 8px no-repeat,
+    var(--nail) calc(100% - 4px) 4px / 8px 8px no-repeat,
+    var(--nail) 4px calc(100% - 5px) / 8px 8px no-repeat,
+    var(--nail) calc(100% - 4px) calc(100% - 5px) / 8px 8px no-repeat,
+    var(--wood) var(--holz);
+  box-shadow:
+    inset 0 2px 0 rgb(255 220 160 / 0.22),
+    inset 0 -3px 0 rgb(0 0 0 / 0.35),
+    0 5px 0 rgb(0 0 0 / 0.4);
+  color: var(--bark);
+}
+.board a {
+  color: inherit;
+  text-decoration: none;
+}
+.board a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+/* --- Header ----------------------------------------------------------------- */
+
+.site-header {
+  position: relative;
+  z-index: 1;
+  height: 130px;
+}
+/* The home page's header floats over the hero's forest. */
+.site-header:not(.forest) {
+  position: absolute;
+  inset: 0 0 auto;
+}
+.header-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 0;
+}
+.site-header:not(.forest) .header-inner {
+  justify-content: flex-end;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.1rem 0.75rem 0.8rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 5.2vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+.brand-flask {
+  flex: none;
+  width: 1.15em;
+}
+
+.waymark {
+  --post: 4rem;
+  position: relative;
+  isolation: isolate;
+}
+/* The post and its shadow on the ground. */
+.waymark::before,
+.waymark::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+}
+.waymark::before {
+  top: -0.6rem;
+  width: 0.7rem;
+  height: calc(100% + 0.6rem + var(--post));
+  margin-left: -0.35rem;
+  border-radius: 0.2rem 0.2rem 0 0;
+  background: linear-gradient(90deg, #8d6a47, #5d4128 45%, #37240f);
+}
+.waymark::after {
+  top: calc(100% + var(--post) - 0.4rem);
+  z-index: -2;
+  width: 3.6rem;
+  height: 0.9rem;
+  margin-left: -1.3rem;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(4 16 8 / 0.75), #0000);
+}
+.waymark ul {
+  display: grid;
+  gap: 0.3rem;
+}
+.waymark li {
+  filter: drop-shadow(0 2px 1px rgb(0 0 0 / 0.5));
+}
+.waymark li:nth-child(odd) {
+  transform: translateX(0.7rem);
+}
+.waymark li:nth-child(even) {
+  transform: translateX(-0.7rem);
+}
+.waymark a {
+  position: relative;
+  display: block;
+  min-width: 7.6rem;
+  padding: 0.3rem 1.5rem 0.35rem 0.9rem;
+  color: #14120a;
+  font-weight: 700;
+  isolation: isolate;
+}
+.waymark li:nth-child(even) a {
+  padding-inline: 1.5rem 0.9rem;
+  text-align: right;
+}
+/* The plate, apart from the link so it does not clip the focus ring. */
+.waymark a::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    var(--sign) calc(100% - 3px),
+    var(--sign-edge) calc(100% - 3px)
+  );
+  clip-path: polygon(
+    0 0,
+    calc(100% - 0.9rem) 0,
+    100% 50%,
+    calc(100% - 0.9rem) 100%,
+    0 100%
+  );
+}
+.waymark li:nth-child(even) a::before {
+  transform: scaleX(-1);
+}
+/* On the home page, the post stands clear of the river. */
+@media (min-width: 64rem) {
+  .site-header:not(.forest) .waymark {
+    margin-right: 6.5rem;
+  }
+}
+.waymark a:hover::before {
+  --sign: #ffe16a;
+}
+.waymark a[aria-current]::before {
+  --sign: #fdfcf6;
+  --sign-edge: #a8a593;
+  clip-path: none;
+}
+/* On a narrow home page, the post ends above the title. */
+.site-header:not(.forest) .waymark {
+  --post: 3rem;
+}
+@media (max-width: 23rem) {
+  .header-inner {
+    padding-inline: 1rem;
+  }
+  .brand {
+    padding-inline: 0.6rem 0.75rem;
+  }
+  .site-header .waymark a {
+    min-width: 0;
+  }
+  .site-header .waymark {
+    margin-right: 0.5rem;
+  }
+}
+@media (min-width: 52rem) {
+  .site-header:not(.forest) .waymark {
+    --post: 4rem;
+  }
+  .waymark a {
+    min-width: 9rem;
+  }
+}
+
+/* --- Signposts -------------------------------------------------------------- */
+
+.signpost {
+  position: relative;
+  width: fit-content;
+  max-width: 34rem;
+  padding: 1.3rem 2rem 1.4rem;
+  text-align: center;
+}
+/* The posts it stands on. */
+.signpost::before,
+.signpost::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 100%;
+  width: 0.9rem;
+  height: 3.4rem;
+  background: linear-gradient(90deg, var(--wood-light) 45%, var(--wood-edge));
+}
+.signpost::before {
+  left: 18%;
+}
+.signpost::after {
+  right: 18%;
+}
+.forest-band {
+  isolation: isolate;
+}
+.signpost h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+.signpost p {
+  margin-top: 0.4rem;
+}
+
+/* --- Footer: the forest floor under the last trees -------------------------- */
+
+.site-footer {
+  padding: 265px 1.25rem 3rem;
+  background:
+    var(--boden) 50% 148px repeat-x,
+    var(--rand-unten) 50% 0 repeat-x,
+    var(--floor);
+  color: var(--bark);
+}
+.footer-inner {
+  display: grid;
+  gap: 2.5rem;
+  max-width: 67.5rem;
+  margin: 0 auto;
+}
+.footer-name {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+.footer-flask {
+  flex: none;
+  width: 3.6rem;
+}
+.footer-name .name {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 8vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(7rem, auto));
+  gap: 2rem clamp(1.5rem, 5vw, 4rem);
+}
+.footer-links .label {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #a9c95f;
+}
+.site-footer a {
+  display: inline-block;
+  padding: 0.25rem 0;
+}
+.site-footer a:hover,
+.site-footer a[aria-current] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+.site-footer .fun-link {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  width: fit-content;
+}
+.mushroom {
+  width: 1.6rem;
+}
+@media (min-width: 56rem) {
+  .footer-inner {
+    grid-template-columns: 1fr auto auto;
+    align-items: start;
+    gap: 5rem;
+  }
+  .site-footer .fun-link {
+    align-self: end;
+  }
+}
+
+/* --- The home page's clearing ----------------------------------------------- */
+
+.hero {
+  position: relative;
+  height: 880px;
+  background:
+    var(--lichtung-schmal) 50% 100% no-repeat,
+    var(--floor) var(--wald) 50% 100% repeat;
+}
+.hero-inner {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(19.5rem, calc(100vw - 2.5rem));
+  color: #0c2416;
+  text-align: center;
+  transform: translateX(-50%);
+}
+.hero h1 {
+  font-size: 2.9rem;
+  letter-spacing: -0.015em;
+}
+.hero .tagline {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+.hero .actions {
+  justify-content: center;
+}
+.hero .flask {
+  width: 7.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 64rem) {
+  .hero {
+    background:
+      var(--lichtung-breit) 50% 100% no-repeat,
+      var(--floor) var(--wald) 50% 100% repeat;
+  }
+  .hero-inner {
+    top: 295px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 3rem;
+    width: 50rem;
+    margin-left: -2.25rem;
+    text-align: left;
+  }
+  .hero h1 {
+    font-size: 5.6rem;
+    white-space: nowrap;
+  }
+  .hero .tagline {
+    font-size: 2.1rem;
+  }
+  .hero .actions {
+    justify-content: flex-start;
+  }
+  .hero .flask {
+    width: 11rem;
+    margin-top: 0;
+  }
+}
+
+.flask-bubble {
+  animation: rise 4s linear infinite;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-66px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .flask-bubble {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+/* --- Reading ---------------------------------------------------------------- */
+
+.page-title {
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  letter-spacing: -0.01em;
+}
+.lead {
+  max-width: 38rem;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+.section-title {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.btn {
+  height: auto;
+  min-height: 2.85rem;
+  padding-block: 0.4rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+.btn-neutral {
+  border-color: var(--wood-edge);
+  background: var(--wood-light);
+  color: var(--bark);
+}
+.btn-neutral:hover {
+  background: var(--wood);
+}
+.text-link {
+  color: var(--link);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+.text-link:hover {
+  color: var(--color-base-content);
+}
+
+/* The name, taken apart: each word stands over what it means. */
+.name-parts {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+.name-parts dt {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-secondary);
+}
+.name-parts dd {
+  max-width: 34rem;
+  margin-top: 0.75rem;
+}
+@media (min-width: 52rem) {
+  .name-parts {
+    grid-template-columns: 1.25fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.games {
+  display: grid;
+  gap: 4rem 3rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 52rem) {
+  .games {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.frame {
+  display: block;
+  overflow: hidden;
+  border: 10px solid var(--wood-light);
+  border-radius: 0.3rem;
+  outline: 2px solid var(--wood-edge);
+  box-shadow: 0 8px 0 rgb(20 41 28 / 0.22);
+}
+.frame img {
+  width: 100%;
+}
+.games .frame img {
+  aspect-ratio: 7 / 5;
+  object-fit: cover;
+  object-position: left;
+}
+.game-title {
+  margin-top: 1.5rem;
+  font-size: 2.5rem;
+}
+.game-title a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.12em;
+}
+
+.feature {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+@media (min-width: 52rem) {
+  .feature {
+    grid-template-columns: 1fr 1.25fr;
+    gap: 3.5rem;
+  }
+}
+
+/* A carved hint that a game also lies in the Waldstatt's forest. */
+.hint {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  max-width: 44rem;
+  margin-top: 3.5rem;
+  padding: 1.25rem 1.5rem 1.35rem;
+}
+.hint .mushroom {
+  flex: none;
+  width: 2.6rem;
+}
+.hint a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+.hint a:hover {
+  color: var(--glow);
+}
+code.command {
+  padding: 0.1em 0.45em;
+  border-radius: 0.2rem;
+  background: #14291c;
+  color: var(--glow);
+  font-size: 0.95em;
+  white-space: nowrap;
+}
+
+/* --- Events ----------------------------------------------------------------- */
+
+.event-list {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+.event-list h2 {
+  font-size: 2.4rem;
+}
+.event-list li {
+  max-width: 42rem;
+  padding-left: 1.5rem;
+  border-left: 6px solid var(--color-secondary);
+}
+.event-list .planned {
+  border-left-style: dotted;
+}
+.meta {
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+/* --- Articles: games, events and the about page ------------------------------ */
+
+.article {
+  max-width: 42rem;
+  margin-top: 3rem;
+}
+.prose {
+  --tw-prose-body: var(--color-base-content);
+  --tw-prose-headings: var(--color-base-content);
+  --tw-prose-bold: var(--color-base-content);
+  --tw-prose-bullets: var(--color-secondary);
+  --tw-prose-links: var(--link);
+  --tw-prose-th-borders: var(--color-secondary);
+  --tw-prose-td-borders: var(--color-base-300);
+  font-size: 1.0625rem;
+}
+.prose table {
+  font-size: 1rem;
+}
+.prose h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.prose table {
+  display: block;
+  overflow-x: auto;
+}
+
+.game-head {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 56rem) {
+  .game-head {
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3.5rem;
+  }
+}
+
+.sketches {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 48rem) {
+  .sketches {
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    align-items: start;
+  }
+}
+.sketch img {
+  width: 100%;
+  border: 8px solid #fdfcf6;
+  box-shadow: 0 3px 10px rgb(20 41 28 / 0.35);
+  background: #fdfcf6;
+}
+.sketch figcaption {
+  margin-top: 0.75rem;
+}
+
+/* Steps on a trail; each trunk slice has one more growth ring. */
+.trail {
+  max-width: 44rem;
+  margin-top: 3rem;
+}
+.trail > li {
+  position: relative;
+  padding: 0 0 2.5rem 4.25rem;
+}
+.trail > li::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  bottom: -0.5rem;
+  left: 1.3rem;
+  border-left: 5px dotted #8a6238;
+}
+.trail > li:last-child {
+  padding-bottom: 0;
+}
+.trail > li:last-child::before {
+  display: none;
+}
+.rings {
+  position: absolute;
+  top: -0.1rem;
+  left: 0;
+  width: 2.9rem;
+}
+.trail h3 {
+  font-size: 1.7rem;
+}
+.trail .when {
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+.trail .frame {
+  margin-top: 1rem;
+}
+
+.about-head {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+.about-head img {
+  width: min(100%, 22rem);
+}
+@media (min-width: 52rem) {
+  .about-head {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+  }
+}
+
+/* --- Fun -------------------------------------------------------------------- */
+
+.variants {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+@media (min-width: 52rem) {
+  .variants {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.variant {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid var(--color-base-content);
+  border-radius: var(--radius-box);
+  background: var(--color-base-100);
+  color: var(--color-base-content);
+}
+.variant img {
+  width: 100%;
+  border-bottom: 2px solid var(--color-base-content);
+}
+.variant > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+.variant h2 {
+  font-size: 2.2rem;
+}
+.variant .tagline {
+  margin-top: 0.35rem;
+  font-weight: 700;
+}
+.variant .idea {
+  margin: 0.75rem 0 1.5rem;
+}
+.variant .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
