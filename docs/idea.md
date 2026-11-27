@@ -10,8 +10,8 @@ out. Its main job is to explain the Lab, and to let visitors find and play the g
 programmed at the Nationaler Zukunftstag and see how they were made. Each game is built
 and deployed to GitHub Pages from its own repository:
 
-- Moto Devil: <https://waldstatt-lab.github.io/moto-devil/> ([source](https://github.com/waldstatt-lab/moto-devil))
-- Car Drive: <https://waldstatt-lab.github.io/carrrgh/> ([source](https://github.com/waldstatt-lab/carrrgh))
+- Moto Devil: <https://waldstatt-lab.ch/moto-devil/> ([source](https://github.com/waldstatt-lab/moto-devil))
+- Car Drive: <https://waldstatt-lab.ch/carrrgh/> ([source](https://github.com/waldstatt-lab/carrrgh))
 
 The site links to these deployments; it does not build, host, or copy the games.
 
