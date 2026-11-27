@@ -9,14 +9,28 @@ summary: Ein Tag, zwei Ideen, zwei Spiele. Was auf Papier stand, liess sich am g
 
 ## Worum es ging
 
-Am Nationalen Zukunftstag entdecken Schülerinnen und Schüler von der 5. Primarklasse bis zur 1. Oberstufe die Arbeitswelt. Bei der ISE AG in
-Einsiedeln haben sie einen Tag lang Spiele entwickelt: eigene Ideen, eigene
-Entscheidungen und am Ende etwas, das andere spielen können.
+Am Nationalen Zukunftstag entdecken Schülerinnen und Schüler von der 5. Primarklasse bis zur 1. Oberstufe die Arbeitswelt. Die ISE AG in
+Einsiedeln hat auch 2026 ihre Türen für alle geöffnet, die sich für Informatik
+interessieren. Einen Tag lang ging es um zwei Bereiche der IT, die
+Plattformentwicklung und die Applikationsentwicklung. Zuschauen allein galt
+nicht: Wer da war, hat selber angepackt.
 
-## Wie der Tag ablief
+## Ein Postenlauf durch den PC
 
-Am Vormittag entstand Car Drive, am Nachmittag Moto Devil. Beide Male ging es
-gleich los: mit Stift und Papier. Aus der Skizze wurde ein Pitch, ein kurzer
+In der Plattformentwicklung ging es um das, was in einem Computer steckt. Auf
+einem Postenlauf haben die Schülerinnen und Schüler die Hardware eines PCs
+spielerisch kennengelernt, Posten für Posten.
+
+## Eigene Spiele, mit KI
+
+In der Applikationsentwicklung wurde früher in Minecraft programmiert. Diesmal
+sind eigene Spiele entstanden, mit Unterstützung einer künstlichen Intelligenz.
+Die Ideen kamen von den Schülerinnen und Schülern, und sie haben erlebt, wie
+eine KI beim Entwickeln von Software hilft.
+
+Am Vormittag entstand Car Drive, am Nachmittag Moto Devil, und dazwischen gab es
+wie jedes Jahr Pizza für alle. Beide Male ging es gleich los: mit Stift und
+Papier. Aus der Skizze wurde ein Pitch, ein kurzer
 Plan, der das Problem, die Lösung und das bewusst Weggelassene festhält. Danach
 wurde programmiert und ausprobiert, und jede neue Idee bekam wieder einen Pitch.
 
@@ -29,4 +43,5 @@ wurde programmiert und ausprobiert, und jede neue Idee bekam wieder einen Pitch.
 
 Am Tag selbst liefen beide Spiele nur als Programm, das man zuerst selber bauen
 musste. Zwei Tage später konnte man sie im Browser spielen, ohne Installation.
-Seither entwickeln wir beide weiter.
+So lassen sie sich auch nach dem Zukunftstag spielen und mit Familie und
+Freunden teilen.
