@@ -3,8 +3,8 @@
 The website of Waldstatt-Lab, a place to experiment with technology in Einsiedeln. It
 shows the games programmed at the Nationaler Zukunftstag and how they were made. They
 are built and deployed from their own repositories:
-Moto Devil (<https://waldstatt-lab.github.io/moto-devil/>, `waldstatt-lab/moto-devil`) and Car
-Drive (<https://waldstatt-lab.github.io/carrrgh/>, `waldstatt-lab/carrrgh`).
+Moto Devil (<https://waldstatt-lab.ch/moto-devil/>, `waldstatt-lab/moto-devil`) and Car
+Drive (<https://waldstatt-lab.ch/carrrgh/>, `waldstatt-lab/carrrgh`).
 The organization homepage is <https://waldstatt-lab.github.io/>. The site is static, built with Astro 7,
 Tailwind CSS 4 and daisyUI 5. It also keeps one complete version per earlier name
 candidate under `/<variant>/`, listed at `/fun/`. Use the versions pinned

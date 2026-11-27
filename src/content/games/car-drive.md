@@ -1,7 +1,7 @@
 ---
 title: Car Drive
 tagline: Drei Spuren, viel Verkehr und ein Boost im richtigen Moment.
-playUrl: https://waldstatt-lab.github.io/carrrgh/
+playUrl: https://waldstatt-lab.ch/carrrgh/
 sourceUrl: https://github.com/waldstatt-lab/carrrgh
 order: 2
 event: zukunftstag-2026

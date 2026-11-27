@@ -6,8 +6,8 @@ made, and links them:
 
 | Game | Play | Source |
 | --- | --- | --- |
-| Moto Devil: a stunt-bike game whose levels lie to you | <https://waldstatt-lab.github.io/moto-devil/> | [waldstatt-lab/moto-devil](https://github.com/waldstatt-lab/moto-devil) |
-| Car Drive: a three-lane arcade driver through traffic | <https://waldstatt-lab.github.io/carrrgh/> | [waldstatt-lab/carrrgh](https://github.com/waldstatt-lab/carrrgh) |
+| Moto Devil: a stunt-bike game whose levels lie to you | <https://waldstatt-lab.ch/moto-devil/> | [waldstatt-lab/moto-devil](https://github.com/waldstatt-lab/moto-devil) |
+| Car Drive: a three-lane arcade driver through traffic | <https://waldstatt-lab.ch/carrrgh/> | [waldstatt-lab/carrrgh](https://github.com/waldstatt-lab/carrrgh) |
 
 The games are built and deployed from their own repositories; this site only
 links to them. `/fun/` lists the name candidates from before the name was chosen, each a

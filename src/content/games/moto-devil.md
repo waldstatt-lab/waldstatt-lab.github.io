@@ -1,7 +1,7 @@
 ---
 title: Moto Devil
 tagline: Ein Stuntbike-Spiel, dessen Levels dich anlügen.
-playUrl: https://waldstatt-lab.github.io/moto-devil/
+playUrl: https://waldstatt-lab.ch/moto-devil/
 sourceUrl: https://github.com/waldstatt-lab/moto-devil
 order: 1
 event: zukunftstag-2026

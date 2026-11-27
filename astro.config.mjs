@@ -11,9 +11,9 @@ export default defineConfig({
   base: process.env.BASE_PATH || "/",
   trailingSlash: "always",
   // Waldstatt Games moved to its own repository, waldstatt-lab/waldstatt, and is
-  // published at /waldstatt/ on the same origin (ADR 0010).
+  // published at https://waldstatt-lab.ch/waldstatt/ (ADR 0010).
   redirects: {
-    "/waldstatt-games/": new URL("/waldstatt/", site).href,
+    "/waldstatt-games/": "https://waldstatt-lab.ch/waldstatt/",
   },
   vite: {
     plugins: [tailwindcss()],

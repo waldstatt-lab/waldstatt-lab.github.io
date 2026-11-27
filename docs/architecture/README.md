@@ -110,7 +110,7 @@ never import another variant's files.
 
 Waldstatt Games was a variant too, until it grew into a building game and moved
 to its own repository, [waldstatt-lab/waldstatt](https://github.com/waldstatt-lab/waldstatt),
-published at <https://waldstatt-lab.github.io/waldstatt/>
+published at <https://waldstatt-lab.ch/waldstatt/>
 ([ADR 0010](decisions/0010-move-waldstatt-games-into-its-own-repository.md)).
 Of the Lab's pages, only the Fun page links to the game.
 
@@ -395,7 +395,7 @@ stops flapping with reduced motion. Nothing is stored or sent.
 | `/<slug>/ueber-uns/` | About the studio | `src/pages/<slug>/ueber-uns.astro` |
 | `/<slug>/spiele/<game>/` | Game idea, what to expect, controls, play link | `src/pages/<slug>/spiele/[game].astro` |
 
-`/waldstatt-games/` is a redirect to <https://waldstatt-lab.github.io/waldstatt/>,
+`/waldstatt-games/` is a redirect to <https://waldstatt-lab.ch/waldstatt/>,
 configured in [astro.config.mjs](../../astro.config.mjs), for links and installed
 apps from the time Waldstatt Games was a variant
 ([ADR 0010](decisions/0010-move-waldstatt-games-into-its-own-repository.md)).
