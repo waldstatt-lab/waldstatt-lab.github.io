@@ -4,7 +4,6 @@ import { render } from "astro:content";
 import Clearing from "../../lab/Clearing.astro";
 import GameBoard from "../../lab/GameBoard.astro";
 import Layout from "../../lab/Layout.astro";
-import WaldstattHint from "../../lab/WaldstattHint.astro";
 import { site } from "../../lab/site";
 import { getHeldEvents } from "../../lib/events";
 import { getEventGames } from "../../lib/games";
@@ -38,14 +37,13 @@ const games = await getEventGames(event.id);
     {games.length > 0 && (
       <section class="mt-16" aria-labelledby="spiele">
         <h2 id="spiele" class="section-title">
-          Was entstanden ist
+          Die Spiele
         </h2>
         <div class="games">
           {games.map((game) => (
             <GameBoard game={game} />
           ))}
         </div>
-        <WaldstattHint games={games} />
       </section>
     )}
     <p class="mt-14">
