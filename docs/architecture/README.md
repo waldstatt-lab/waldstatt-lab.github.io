@@ -31,7 +31,7 @@ with wooden boards, and clearings of open ground for reading.
 | `Clearing.astro` | Open ground with the forest's edges above and below |
 | `Flask.astro`, `Rings.astro` | The flask of the avatar, with rising bubbles; a trunk slice with one growth ring per step |
 | `GameBoard.astro` | A game with its screenshot, «spielen» and «Wie es entstand» |
-| `WaldstattHint.astro`, `Mushroom.astro` | A board naming the games that also lie hidden in the Waldstatt game and how to code there; the fly agaric on it and beside the footer's «Fun» |
+| `Mushroom.astro` | The fly agaric on the Fun page's Waldstatt hint and beside the «Fun» link in the footer |
 | `styles.css`, `theme.css` | Tailwind, typography, daisyUI and the Lab's theme |
 | `variants.css` | The candidates' themes, for the Fun page |
 | `assets/` | The GitHub organization's avatar, and the icon made from it |
@@ -53,9 +53,9 @@ home page, whose title it is. The footer is the forest floor under the last tree
 links to all games.
 
 The home page shows one clearing per event held, the newest first, then a board in the
-forest for each planned event. Games with `inWaldstatt` also lie hidden in the Waldstatt
-game; a hint says so on the home page, their event's page and their own page. Only the
-Fun page links to the game itself. «Spiele» in the navigation
+forest for each planned event. The Fun page names the games with `inWaldstatt`
+that are hidden in the Waldstatt game. Only that page shows the programming hint
+and links to the game. «Spiele» in the navigation
 leads to the newest event with games.
 
 ### Content
@@ -68,8 +68,8 @@ leads to the newest event with games.
 
 Pictures lie in `src/assets/`: `games/` holds a screenshot per game, `making/` the
 sketches and further pictures. Sketches come from the game repositories' pitches,
-scaled down and without the photos' metadata. Dates and times in `making` come from
-those photos and from the repositories' commits.
+scaled down and without the photos' metadata. The making-of stories explain design
+choices and link to the corresponding pitches in the game repositories.
 
 ### Adding an event or a game
 

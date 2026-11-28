@@ -1,5 +1,5 @@
 ---
-intro: Um 9:13 Uhr ein Blatt Papier, um 10:30 Uhr die erste Fahrt. Bis zum Mittag kamen Schilde, Lastwagen und Münzen dazu.
+intro: Schon auf der Skizze hat das Auto drei Spuren zur Wahl. Bei der Probefahrt fiel auf, dass man auf der Linie zwischen zwei Spuren jedem Auto ausweichen konnte. Was würde passieren, wenn die anderen Autos ebenfalls die Spur wechselten?
 sketches:
   - src: ../../assets/making/car-drive-skizze.webp
     alt: Handskizze einer Strasse mit drei Spuren. Kästchen mit Pfeilen sind Autos, rechts stehen drei Herzen und ein Kasten mit der Beschriftung Boost, unten rechts das eigene Auto.
@@ -8,35 +8,27 @@ sketches:
     alt: Digitale Zeichnung «Car Drive, erste Spielidee» mit drei Spuren, rotem Gegenverkehr, grauen Autos, dem blauen eigenen Auto und einer Erklärung der Anzeige.
     caption: Dieselbe Idee, ins Reine gezeichnet für den Pitch.
 steps:
-  - when: 12. November, 9:13 Uhr
-    title: Ein Blatt Papier
+  - title: Ein Blatt Papier
     text: Drei Spuren von oben, Kästchen mit Pfeilen als Verkehr, drei Herzen und eine Anzeige für den Boost. Mehr braucht die Idee nicht.
-  - when: 10:30 Uhr
-    title: Pitch und erste Fahrt
+  - title: Pitch und erste Fahrt
     text: Der Pitch macht aus der Skizze Regeln. Das Auto fährt von selbst, man lenkt, boostet und hat drei Leben. Kurz darauf ist genau das spielbar, mit Verkehr auf allen drei Spuren.
     pitch: https://github.com/waldstatt-lab/carrrgh/blob/main/docs/pitches/car-drive/pitch--car-movements.md
-  - when: 10:41 Uhr
-    title: Herzen und Schilde
+  - title: Herzen und Schilde
     text: Nach dem ersten Fehler fuhr man nur noch vorsichtig. Seltene Fundstücke sorgen dafür, dass sich ein Risiko wieder lohnt.
     pitch: https://github.com/waldstatt-lab/carrrgh/blob/main/docs/pitches/power-ups/pitch--power-ups-and-shields.md
-  - when: 11:02 Uhr
-    title: Blinker und Lastwagen
+  - title: Blinker und Lastwagen
     text: Auf den Spurlinien war man immer sicher. Nun wechseln die anderen Autos die Spur, sie blinken aber vorher. Später kommen Lastwagen dazu.
     pitch: https://github.com/waldstatt-lab/carrrgh/blob/main/docs/pitches/traffic/pitch--lane-changes-and-trucks.md
-  - when: 11:31 Uhr
-    title: Münzen
+  - title: Münzen
     text: Alle zehn Meter gibt es eine Münze. Das Spiel merkt sich, wer fährt und wie viel er verdient hat.
     pitch: https://github.com/waldstatt-lab/carrrgh/blob/main/docs/pitches/coins/pitch--coins-and-player-profile.md
-  - when: 13:16 Uhr
-    title: Garage und endlose Levels
+  - title: Garage und endlose Levels
     text: Münzen brauchen ein Ziel. In der Garage stehen zehn Fahrzeuge zum Kaufen, Umlackieren und Tunen. Und nach Level 10 ist nicht mehr Schluss, der Verkehr wird immer dichter.
     pitch: https://github.com/waldstatt-lab/carrrgh/blob/main/docs/pitches/vehicles/pitch--garage-tuning-and-marketplace.md
-  - when: 14. November, 23:35 Uhr
-    title: Ab in den Browser
+  - title: Ab in den Browser
     text: Car Drive läuft als WebAssembly auf einer Webseite. Profil, Münzen und Garage speichert der Browser.
     pitch: https://github.com/waldstatt-lab/carrrgh/blob/main/docs/pitches/browser-game/pitch--browser-game.md
-  - when: 15. November, 22:40 Uhr
-    title: Eigene Tasten und eine Bremse
+  - title: Eigene Tasten und eine Bremse
     text: Jede Taste lässt sich selber belegen. Und wer im Verkehr steckt, kann jetzt bremsen.
     pitch: https://github.com/waldstatt-lab/carrrgh/blob/main/docs/pitches/key-bindings/pitch--key-bindings.md
 ---

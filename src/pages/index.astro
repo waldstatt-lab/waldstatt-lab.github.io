@@ -3,7 +3,6 @@ import Clearing from "../lab/Clearing.astro";
 import Flask from "../lab/Flask.astro";
 import GameBoard from "../lab/GameBoard.astro";
 import Layout from "../lab/Layout.astro";
-import WaldstattHint from "../lab/WaldstattHint.astro";
 import { site } from "../lab/site";
 import { getHeldEvents, getPlannedEvents } from "../lib/events";
 import { getEventGames } from "../lib/games";
@@ -59,9 +58,9 @@ const firstWithGames = events.findIndex(({ games }) => games.length > 0);
       <div>
         <dt>Lab</dt>
         <dd>
-          Unser Platz zum Ausprobieren. Wir experimentieren mit Technik und
-          bauen Dinge, um zu sehen, ob sie funktionieren. Zum Beispiel am
-          Zukunftstag, wo aus Skizzen auf Papier richtige Spiele wurden.
+          Hier experimentieren wir mit Technik. Am Zukunftstag haben wir zum
+          Beispiel ausprobiert, wie man aus einer gezeichneten Strecke ein Spiel
+          macht.
         </dd>
       </div>
     </dl>
@@ -101,7 +100,6 @@ const firstWithGames = events.findIndex(({ games }) => games.length > 0);
             ))}
           </div>
         )}
-        <WaldstattHint games={games} />
       </Clearing>
     </>
   ))}

@@ -66,8 +66,6 @@ const making = defineCollection({
       sketches: z.array(picture).default([]),
       steps: z.array(
         z.object({
-          /** When it happened, as the commit or the photo records it. */
-          when: z.string(),
           title: z.string(),
           text: z.string(),
           picture: picture.optional(),

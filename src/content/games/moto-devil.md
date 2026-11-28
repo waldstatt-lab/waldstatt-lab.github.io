@@ -12,14 +12,10 @@ inWaldstatt: true
 
 ## Die Idee
 
-Moto Devil mischt zwei Genres. Aus den Stuntbike-Spielen kommt das Motorrad in
-Seitenansicht, auf einer Strecke mit Rampen, Loopings und Saltos. Aus den
-Troll-Platformern kommt das Level, das harmlos aussieht und dich dann reinlegt:
-Stacheln schiessen aus dem Boden, eine Säule kracht von der Decke, und das Ziel
-fährt davon. Du stürzt, lachst und versuchst es nochmal – um einen Trick
-schlauer.
-
-Angefangen hat alles mit Skizzen auf Papier.
+Du siehst dein Motorrad von der Seite, fährst durch Loopings und
+springst über Rampen. Trau der Strecke nicht zu sehr. Aus dem Boden schiessen
+Stacheln, von der Decke kracht eine Säule, und manchmal fährt dir sogar das
+Ziel davon.
 
 ## Was dich erwartet
 

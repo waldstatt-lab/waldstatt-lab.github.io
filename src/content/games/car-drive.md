@@ -13,9 +13,9 @@ inWaldstatt: true
 ## Die Idee
 
 Car Drive ist ein Arcade-Autospiel aus der Vogelperspektive. Dein Auto fährt von
-selbst; du lenkst durch den Verkehr auf drei Spuren, suchst Lücken und
-entscheidest, wann du den Boost einsetzt. Mit drei Herzen darfst du Fehler
-machen, und die erreichte Strecke ist das Ziel für die nächste Fahrt.
+selbst. Du suchst dir auf drei Spuren einen Weg durch den Verkehr und gibst
+mit dem Boost Gas, wenn die Strecke frei ist. Du startest mit drei Herzen.
+Wie weit kommst du damit?
 
 Grundlage ist eine Skizze von Hand: drei Spuren, Autos mit Richtungspfeilen,
 drei Herzen und eine Boost-Anzeige.
@@ -23,7 +23,7 @@ drei Herzen und eine Boost-Anzeige.
 ## Was dich erwartet
 
 - Autos in deiner Richtung holst du langsam ein, der Gegenverkehr kommt schnell
-  auf dich zu. Ab Level 3 fahren auf jeder Spur beide Richtungen.
+  auf dich zu. Ab Level 3 kann dir auf jeder Spur ein Auto entgegenkommen.
 - Alle 1000 Meter steigt das Level und der Verkehr wird dichter. Andere Autos
   blinken, bevor sie die Spur wechseln, und ab 4000 Metern kommen Lastwagen dazu.
 - Ein Treffer kostet ein Herz, danach bist du kurz geschützt. Selten liegt ein

@@ -785,10 +785,6 @@ code.command {
 .trail h3 {
   font-size: 1.7rem;
 }
-.trail .when {
-  font-weight: 700;
-  color: var(--color-secondary);
-}
 .trail .frame {
   margin-top: 1rem;
 }
